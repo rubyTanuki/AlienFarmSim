@@ -41,4 +41,20 @@ public class UIInvManager : MonoBehaviour
         closeAll();
         itemUI.SetActive(true);
     }
+<<<<<<< Updated upstream
+=======
+
+    public void updateInfo(){
+        foreach(KeyValuePair<PlantSO, int> plant in seedInventory){
+            
+            GameObject plantSlot = Instantiate(slotPrefab);
+            UIInvSelectorSlot slotScript = plantSlot.GetComponent<UIInvSelectorSlot>();
+            slotScript.setItem(plant.Key);
+            slotScript.count = plant.Value;
+            plantSlot.transform.SetParent(seedContent.transform);
+            plantSlot.transform.localScale = new Vector3(1,1,1);
+            slotScript.scrollScript.startScroll();
+        }
+    }
+>>>>>>> Stashed changes
 }

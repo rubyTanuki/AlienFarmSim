@@ -14,12 +14,18 @@ public class UIInvSelectorSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI num;
 
+<<<<<<< Updated upstream
+=======
+    public ScrollingTextManager scrollScript;
+
+    public GameObject hover;
+>>>>>>> Stashed changes
 
 
-    void Start()
+    void Awake()
     {
         img = imageObj.GetComponent<Image>();
-        populateData();
+        //populateData();
     }
 
 

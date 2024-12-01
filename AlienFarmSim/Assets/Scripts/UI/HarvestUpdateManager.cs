@@ -25,6 +25,5 @@ public class HarvestUpdateManager : MonoBehaviour
         TextMeshProUGUI uText = update.transform.Find("Text").GetComponent<TextMeshProUGUI>();
         uText.text = "+" + num + " " + name;
         update.transform.SetParent(this.gameObject.transform, false);
-
     }
 }

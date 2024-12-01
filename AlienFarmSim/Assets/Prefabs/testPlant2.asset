@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ce44622c85f48b69b5c9cec0c71e26, type: 3}
   m_Name: testPlant2
   m_EditorClassIdentifier: 
-  name: testPlant2
-  description: 
+  name: Test Plant 02
+  shortName: 
+  description: this is a test plant. It takes 3 seconds to grow
+  image: {fileID: -1595392201, guid: 7436983db344544b3a545d2f178d76fe, type: 3}
   growthTime: 3
   sprites:
   - {fileID: 820291466, guid: 7436983db344544b3a545d2f178d76fe, type: 3}
@@ -22,3 +24,4 @@ MonoBehaviour:
   - {fileID: 1411524856, guid: 7436983db344544b3a545d2f178d76fe, type: 3}
   - {fileID: -1595392201, guid: 7436983db344544b3a545d2f178d76fe, type: 3}
   - {fileID: -928076323, guid: 7436983db344544b3a545d2f178d76fe, type: 3}
+  crop: {fileID: 0}

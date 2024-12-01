@@ -8,6 +8,7 @@ public class UIPRManager : MonoBehaviour
     public PlantSO selectedPlant;
     public GameObject plantSelector;
     public List<GameObject> rows;
+    public GameObject invManager;
     // Start is called before the first frame update
     void Start()
     {

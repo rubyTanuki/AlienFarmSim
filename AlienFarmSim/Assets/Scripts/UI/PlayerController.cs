@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
             if(curRaycastResult.gameObject.tag == "PlantSelectorSlot"){
                 curRaycastResult.gameObject.GetComponent<UIPSSlot>().setSelected(true);
             }
+            if(curRaycastResult.gameObject.tag == "InvSelectorSlot"){
+                curRaycastResult.gameObject.GetComponent<UIInvSelectorSlot>().setHover(true);
+            }
         }
 
         if(Input.GetKeyDown("escape") && UIOpen.Count>0)

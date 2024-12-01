@@ -12,6 +12,7 @@ public class UIPRSlot : MonoBehaviour
     public UIPRManager manager;
     public UIPRPlant plant;
     private HarvestUpdateManager updates;
+    private UIInvManager invManager;
 
     private Sprite empty;
 
@@ -21,6 +22,7 @@ public class UIPRSlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        invManager = manager.invManager.GetComponent<UIInvManager>();
         updates = GameObject.Find("UICanvas/HarvestUpdates").GetComponent<HarvestUpdateManager>();
         empty = plant.getImage();
     }
@@ -84,6 +86,12 @@ public class UIPRSlot : MonoBehaviour
     public void harvest(){
         if(plant.plant != null){
             updates.addUpdate(plant.plant.name, 1);
+
+            if(invManager.seedInventory.ContainsKey(plant.plant)){
+                invManager.seedInventory[plant.plant]++;
+            }else{
+                invManager.seedInventory.Add(plant.plant, 1);
+            }
             plant.plant = null;
         }
     }

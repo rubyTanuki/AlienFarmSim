@@ -47,14 +47,19 @@ public class UIPRRow : MonoBehaviour
     }
 
     public void harvestAll(){
+        float timer = Time.time;
         foreach(UIPRSlot slot in slots){
-            //wait(1f);
+            // while(true){
+            //     if(Time.time-timer>.01f) break;
+            // }
             slot.harvest();
+            timer = Time.time;
         }
     }
 
-    IEnumerator wait(float seconds){
+    IEnumerator waitToHarvest(float seconds, UIPRSlot slot){
         yield return new WaitForSeconds(seconds);
+        slot.harvest();
     }
 
 

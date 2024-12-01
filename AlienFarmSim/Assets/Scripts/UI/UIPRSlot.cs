@@ -84,6 +84,11 @@ public class UIPRSlot : MonoBehaviour
     public void harvest(){
         if(plant.plant != null){
             updates.addUpdate(plant.plant.name, 1);
+            if(manager.invManager.seedInventory.ContainsKey(plant.plant)){
+                manager.invManager.seedInventory[plant.plant]++;
+            }else{
+                manager.invManager.seedInventory.Add(plant.plant, 1);
+            }
             plant.plant = null;
         }
     }

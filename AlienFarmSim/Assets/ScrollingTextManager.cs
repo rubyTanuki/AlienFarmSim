@@ -15,16 +15,12 @@ public class ScrollingTextManager : MonoBehaviour
     private string sourceText;
     private string tempText;
 
+    private float infoWidth;
+
     private Vector3 startPosition;
 
     void Awake()
     {
-<<<<<<< Updated upstream
-        textRectTransform = text.GetComponent<RectTransform>();
-
-        /*
-=======
-        
         textRectTransform = text.GetComponent<RectTransform>();
         sourceText = text.text;
         createClone();
@@ -33,9 +29,10 @@ public class ScrollingTextManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        Debug.Log("Yes");
         sourceText = text.text;
         infoWidth = GetComponent<RectTransform>().rect.width + 10;
-        textRectTransform.localPosition = new Vector3(7, 15, 0);
+        textRectTransform.anchoredPosition = new Vector3(0, 15, 0);
         StartCoroutine(Scroll());
     }
 
@@ -65,7 +62,8 @@ public class ScrollingTextManager : MonoBehaviour
 
 
             //scroll by moving rect transform
-            textRectTransform.localPosition = new Vector3((-scrollPosition%width) + startPosition.x, startPosition.y, startPosition.z);
+            textRectTransform.anchoredPosition = new Vector3((-scrollPosition%width), startPosition.y, startPosition.z);
+            //textRectTransform.anchoredPosition = new Vector3(textRectTransform.anchoredPosition.x + startPosition.x, startPosition.y, startPosition.z);
             if(scrollPosition%width < scrollSpeed * 20 * Time.deltaTime) yield return new WaitForSeconds(1.5f);
             if(scrollPosition>width) scrollPosition = 0;
             
@@ -77,45 +75,13 @@ public class ScrollingTextManager : MonoBehaviour
     }
 
     private void createClone(){
->>>>>>> Stashed changes
         cloneText = Instantiate(text) as TextMeshProUGUI;
         cloneText.SetText(text.text);
         RectTransform cloneRectTransform = cloneText.GetComponent<RectTransform>();
         cloneRectTransform.SetParent(textRectTransform);
         cloneRectTransform.anchorMin = new Vector2(1, 0.5f);
         cloneRectTransform.localScale = new Vector3(1,1,1);
-<<<<<<< Updated upstream
-        */
-    }
-
-    // Start is called before the first frame update
-    IEnumerator  Start()
-    {
-        float width = text.preferredWidth;
-        Vector3 startPosition = new Vector3(10, 13, 0);
-        Debug.Log(textRectTransform.position);
-
-        float scrollPosition = 0;
-
-        while(true){
-            //recompute width if text has changed
-            /*
-            if(text.hasChanged){
-                width = text.preferredWidth;
-                cloneText.text = text.text;
-            }
-            */
-
-            //scroll by moving rect transform
-            //textRectTransform.position = new Vector3(-scrollPosition % width, startPosition.y, startPosition.z);
-            textRectTransform.position = new Vector3(10, 13, 0);
-            scrollPosition += scrollSpeed * 20 * Time.deltaTime;
-
-            yield return null;
-        }
-=======
         cloneRectTransform.anchoredPosition = new Vector3(5, 0, 0);
         Canvas.ForceUpdateCanvases();
->>>>>>> Stashed changes
     }
 }

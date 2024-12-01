@@ -12,14 +12,14 @@ public class UIInvSelectorSlot : MonoBehaviour
     [SerializeField] private GameObject imageObj;
     private Image img;
     [SerializeField] private TextMeshProUGUI name;
-    [SerializeField] private TextMeshProUGUI num;
+    [SerializeField] public TextMeshProUGUI num;
+    [SerializeField] private TextMeshProUGUI description;
 
-<<<<<<< Updated upstream
-=======
     public ScrollingTextManager scrollScript;
 
     public GameObject hover;
->>>>>>> Stashed changes
+
+
 
 
     void Awake()
@@ -39,8 +39,10 @@ public class UIInvSelectorSlot : MonoBehaviour
         populateData();
     }
     public void populateData(){
-        name.text = item.name;
-        num.text = count + "";
+        name.SetText(item.name);
+        description.SetText(item.description);
+        num.SetText(count + "");
+        img.sprite = item.image;
     }
     public void setCount(int c){
         count = c;

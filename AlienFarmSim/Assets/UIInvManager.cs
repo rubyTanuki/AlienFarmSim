@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class UIInvManager : MonoBehaviour
 {
-    Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
-    Dictionary<CropSO, int> yieldInventory = new Dictionary<CropSO, int>();
+    public Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
+    public Dictionary<CropSO, int> yieldInventory = new Dictionary<CropSO, int>();
 
     [SerializeField] private GameObject seedUI;
     [SerializeField] private GameObject cropUI;
     [SerializeField] private GameObject itemUI;
+
+    public GameObject slotPrefab;
+    public GameObject seedContent;
 
 
     // Start is called before the first frame update
@@ -21,7 +24,7 @@ public class UIInvManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.U)) updateInfo();
     }
 
     public void closeAll(){
@@ -41,12 +44,8 @@ public class UIInvManager : MonoBehaviour
         closeAll();
         itemUI.SetActive(true);
     }
-<<<<<<< Updated upstream
-=======
-
     public void updateInfo(){
         foreach(KeyValuePair<PlantSO, int> plant in seedInventory){
-            
             GameObject plantSlot = Instantiate(slotPrefab);
             UIInvSelectorSlot slotScript = plantSlot.GetComponent<UIInvSelectorSlot>();
             slotScript.setItem(plant.Key);
@@ -56,5 +55,4 @@ public class UIInvManager : MonoBehaviour
             slotScript.scrollScript.startScroll();
         }
     }
->>>>>>> Stashed changes
 }

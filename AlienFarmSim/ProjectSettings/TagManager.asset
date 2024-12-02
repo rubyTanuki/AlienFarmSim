@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlantSlot
   - PlantSelectorSlot
+  - InvSelectorSlot
   layers:
   - Default
   - TransparentFX

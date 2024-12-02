@@ -29,11 +29,17 @@ public class PlayerController : MonoBehaviour
 
         for(int i=0;i<results.Count;i++){
             RaycastResult curRaycastResult = results[i];
-            if(curRaycastResult.gameObject.tag == "PlantSlot"){
-                curRaycastResult.gameObject.GetComponent<UIPRSlot>().setHover(true);
-            }
-            if(curRaycastResult.gameObject.tag == "PlantSelectorSlot"){
-                curRaycastResult.gameObject.GetComponent<UIPSSlot>().setSelected(true);
+
+            switch(curRaycastResult.gameObject.tag){
+                case "InvSelectorSlot":
+                    curRaycastResult.gameObject.GetComponent<UIInvSelectorSlot>().setHover(true);
+                    break;
+                case "PlantSlot":
+                    curRaycastResult.gameObject.GetComponent<UIPRSlot>().setHover(true);
+                    break;
+                case "PlantSelectorSlot":
+                    curRaycastResult.gameObject.GetComponent<UIPSSlot>().setSelected(true);
+                    break;
             }
         }
 

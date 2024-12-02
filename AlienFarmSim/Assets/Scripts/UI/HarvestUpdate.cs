@@ -26,13 +26,7 @@ public class HarvestUpdate : MonoBehaviour
         }
         
         if(Time.time-time>2){
-            if(updateManager.updateList.Count > 0){
-                foreach(KeyValuePair<ItemSO, GameObject> kvp in updateManager.updateList){
-                    if(kvp.Value == this.gameObject){
-                        updateManager.updateList.Remove(kvp.Key);
-                    }
-                }
-            }
+            updateManager.updateList.Remove(item);
             Destroy(this.gameObject);
         }
     }

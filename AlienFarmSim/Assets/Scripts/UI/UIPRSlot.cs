@@ -83,12 +83,21 @@ public class UIPRSlot : MonoBehaviour
 
     public PlantSO harvest(){
         PlantSO h = plant.plant;
-        if(plant.plant != null){
-            if(manager.invManager.seedInventory.ContainsKey(plant.plant)){
-                manager.invManager.seedInventory[plant.plant]++;
+        if(h != null){
+            if(manager.invManager.seedInventory.ContainsKey(h)){
+                manager.invManager.seedInventory[h]++;
             }else{
-                manager.invManager.seedInventory.Add(plant.plant, 1);
+                manager.invManager.seedInventory.Add(h, 1);
             }
+
+            if(plant.growthStage == 4){
+                if(manager.invManager.cropInventory.ContainsKey(h.crop)){
+                    manager.invManager.cropInventory[h.crop] += h.baseYield;
+                }else{
+                    manager.invManager.cropInventory.Add(h.crop, h.baseYield);
+                }
+            }
+            
             plant.plant = null;
         }
         return h;

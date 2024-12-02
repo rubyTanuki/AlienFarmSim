@@ -23,4 +23,5 @@ MonoBehaviour:
   - {fileID: 2032954918, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
   - {fileID: -14139997, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
   - {fileID: 982920617, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
-  crop: {fileID: 0}
+  crop: {fileID: 11400000, guid: baa6e9b6ce6524e278811e0e5484a9b3, type: 2}
+  baseYield: 3

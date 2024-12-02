@@ -29,7 +29,6 @@ public class ScrollingTextManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        Debug.Log("Yes");
         sourceText = text.text;
         infoWidth = GetComponent<RectTransform>().rect.width + 10;
         textRectTransform.anchoredPosition = new Vector3(0, 15, 0);

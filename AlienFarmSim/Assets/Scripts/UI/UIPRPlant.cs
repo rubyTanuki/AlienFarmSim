@@ -9,9 +9,9 @@ public class UIPRPlant : MonoBehaviour
     private double timer;
     private Sprite activeSprite;
     public PlantSO plant;
-    private int growthStage = 0;
+    public int growthStage = 0;
 
-    private enum Stages
+    public enum Stages
     {
         Seedling,
         Sprout,

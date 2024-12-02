@@ -20,7 +20,7 @@ public class UIInvSelectorSlot : MonoBehaviour
     public GameObject hover;
 
 
-
+    public bool isHovering = false;
 
     void Awake()
     {
@@ -31,8 +31,11 @@ public class UIInvSelectorSlot : MonoBehaviour
 
     void Update()
     {
-        
+        hover.SetActive(isHovering);
+        isHovering = false;
     }
+
+    public void setHover(bool b){ isHovering = b; }
 
     public void setItem(ItemSO i){
         item = i;

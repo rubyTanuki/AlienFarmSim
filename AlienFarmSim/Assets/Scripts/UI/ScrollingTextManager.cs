@@ -48,7 +48,7 @@ public class ScrollingTextManager : MonoBehaviour
 
         while(true){
             width = text.preferredWidth+5;
-            Debug.Log(this.gameObject.name + " " + infoWidth + " " + width);
+            //Debug.Log(this.gameObject.name + " " + infoWidth + " " + width);
 
             //recompute width if text has changed
             if(text.text != sourceText){
@@ -59,6 +59,9 @@ public class ScrollingTextManager : MonoBehaviour
                     if(width>=infoWidth)
                         createClone();
                 } 
+                if(cloneText == null && width>=infoWidth){
+                    createClone();
+                }
             }
 
 

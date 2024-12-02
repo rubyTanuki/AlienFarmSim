@@ -22,12 +22,27 @@ public class UIInvManager : MonoBehaviour
 
     void OnEnable(){
         //remove previous selector slots
-        foreach(GameObject child in seedContent.transform){
-            GameObject.Destroy(child);
+
+        // while(seedContent.transform.childcount>0){
+        //     Destroy(seedContent.transform.GetChild(0));
+        // }
+        // // for(int i=seedContent.transform.childCount-1;i>=0;i--){
+
+        // // }
+        // while(cropContent.transform.childCount>0){
+
+        // }
+        if(seedContent.transform.childCount!= 0){
+            foreach(GameObject child in seedContent.transform){
+                GameObject.Destroy(child);
+            }
         }
-        foreach(GameObject child in cropContent.transform){
-            GameObject.Destroy(child);
+        if(cropContent.transform.childCount!= 0){
+            foreach(GameObject child in cropContent.transform){
+                GameObject.Destroy(child);
+            }
         }
+        
 
         //populate with updated slots
         populateSelectorSlots();
@@ -51,7 +66,6 @@ public class UIInvManager : MonoBehaviour
         itemUI.SetActive(true);
     }
     public void populateSelectorSlots(){
-
         //populating seed inventory
         foreach(KeyValuePair<PlantSO, int> seed in seedInventory){
             addNewSelectorSlot(seed.Key, seed.Value, seedContent);

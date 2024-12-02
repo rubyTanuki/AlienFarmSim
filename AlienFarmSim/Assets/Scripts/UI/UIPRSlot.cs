@@ -81,9 +81,9 @@ public class UIPRSlot : MonoBehaviour
         hover.SetActive(false);
     }
 
-    public void harvest(){
+    public PlantSO harvest(){
+        PlantSO h = plant.plant;
         if(plant.plant != null){
-            updates.addUpdate(plant.plant.name, 1);
             if(manager.invManager.seedInventory.ContainsKey(plant.plant)){
                 manager.invManager.seedInventory[plant.plant]++;
             }else{
@@ -91,6 +91,7 @@ public class UIPRSlot : MonoBehaviour
             }
             plant.plant = null;
         }
+        return h;
     }
 
 }

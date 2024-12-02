@@ -48,8 +48,8 @@ public class UIPRRow : MonoBehaviour
 
     public void harvestAll(){
         foreach(UIPRSlot slot in slots){
-            //wait(1f);
-            slot.harvest();
+            HarvestUpdateManager updateManager = GameObject.Find("UICanvas/HarvestUpdates").GetComponent<HarvestUpdateManager>();
+            updateManager.addUpdate(slot.harvest(), 1);
         }
     }
 

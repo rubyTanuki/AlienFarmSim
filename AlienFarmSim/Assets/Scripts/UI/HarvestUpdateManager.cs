@@ -6,6 +6,8 @@ using TMPro;
 public class HarvestUpdateManager : MonoBehaviour
 {
     public GameObject updatePrefab;
+
+    public Dictionary<ItemSO, GameObject> updateList = new Dictionary<ItemSO, GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +17,25 @@ public class HarvestUpdateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L)){
-            addUpdate("testPlant", 2);
-        }
+
     }
 
-    public void addUpdate(string name, int num){
-        GameObject update = Instantiate(updatePrefab);
-        TextMeshProUGUI uText = update.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-        uText.text = "+" + num + " " + name;
-        update.transform.SetParent(this.gameObject.transform, false);
-
+    public void addUpdate(ItemSO item, int num){
+        if(!updateList.ContainsKey(item)){
+            //make new update object
+            GameObject update = Instantiate(updatePrefab);
+            HarvestUpdate script = update.GetComponent<HarvestUpdate>();
+            script.item = item;
+            script.count = num;
+            script.updateManager = this;
+            update.transform.SetParent(this.gameObject.transform, false);
+            updateList.Add(item, update);
+        }
+        else{
+            //edit existing update object
+            HarvestUpdate hUpdate = updateList[item].GetComponent<HarvestUpdate>();
+            hUpdate.count += num;
+            hUpdate.resetTimer();
+        }
     }
 }

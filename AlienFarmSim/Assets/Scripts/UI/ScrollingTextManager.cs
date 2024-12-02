@@ -19,6 +19,8 @@ public class ScrollingTextManager : MonoBehaviour
 
     private Vector3 startPosition;
 
+    [SerializeField] private float scrollPos;
+
     void Awake()
     {
         textRectTransform = text.GetComponent<RectTransform>();
@@ -31,7 +33,7 @@ public class ScrollingTextManager : MonoBehaviour
     {
         sourceText = text.text;
         infoWidth = GetComponent<RectTransform>().rect.width + 10;
-        textRectTransform.anchoredPosition = new Vector3(0, 15, 0);
+        //textRectTransform.anchoredPosition = new Vector3(0, 15, 0);
         StartCoroutine(Scroll());
     }
 
@@ -39,14 +41,14 @@ public class ScrollingTextManager : MonoBehaviour
         StartCoroutine(Scroll());
     }
     public IEnumerator Scroll(){
-        float width = text.preferredWidth + 5;
-        if(width<infoWidth && cloneText != null) GameObject.Destroy(cloneText.gameObject);
-        startPosition = textRectTransform.localPosition;
+        float width = text.preferredWidth+5;
+        //if(width<infoWidth && cloneText != null) GameObject.Destroy(cloneText.gameObject);
+        startPosition = textRectTransform.anchoredPosition;
         float scrollPosition = 0;
 
         while(true){
-            width = text.preferredWidth + 5;
-            
+            width = text.preferredWidth+5;
+            Debug.Log(this.gameObject.name + " " + infoWidth + " " + width);
 
             //recompute width if text has changed
             if(text.text != sourceText){
@@ -54,7 +56,7 @@ public class ScrollingTextManager : MonoBehaviour
                 
                 if(cloneText != null){
                     GameObject.Destroy(cloneText.gameObject);
-                    if(width>infoWidth)
+                    if(width>=infoWidth)
                         createClone();
                 } 
             }
@@ -62,9 +64,10 @@ public class ScrollingTextManager : MonoBehaviour
 
             //scroll by moving rect transform
             textRectTransform.anchoredPosition = new Vector3((-scrollPosition%width), startPosition.y, startPosition.z);
-            //textRectTransform.anchoredPosition = new Vector3(textRectTransform.anchoredPosition.x + startPosition.x, startPosition.y, startPosition.z);
+            textRectTransform.anchoredPosition = new Vector3(textRectTransform.anchoredPosition.x + startPosition.x, startPosition.y, startPosition.z);
             if(scrollPosition%width < scrollSpeed * 20 * Time.deltaTime) yield return new WaitForSeconds(1.5f);
             if(scrollPosition>width) scrollPosition = 0;
+            scrollPos = scrollPosition%width;
             
             if(width>infoWidth){
                 scrollPosition += scrollSpeed * 20 * Time.deltaTime;

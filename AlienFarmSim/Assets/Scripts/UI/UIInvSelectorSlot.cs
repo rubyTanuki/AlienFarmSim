@@ -31,6 +31,14 @@ public class UIInvSelectorSlot : MonoBehaviour
 
     void Update()
     {
+        if(hover.activeSelf){
+            if(Input.GetMouseButtonDown(0)){
+                //Debug.Log("Select");
+                GameObject.Find("UICanvas/InventoryUI").GetComponent<UIInvManager>().selectedItem = item;
+            }
+        }
+
+
         hover.SetActive(isHovering);
         isHovering = false;
     }

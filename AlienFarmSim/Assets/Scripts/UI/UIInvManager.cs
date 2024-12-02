@@ -17,6 +17,8 @@ public class UIInvManager : MonoBehaviour
     public GameObject cropContent;
     public GameObject itemContent;
 
+    public ItemSO selectedItem;
+
 
     void OnEnable(){
         //remove previous selector slots

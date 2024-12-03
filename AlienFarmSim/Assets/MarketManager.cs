@@ -2,28 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvManager : MonoBehaviour
+public class MarketManager : MonoBehaviour
 {
-    public GameObject inventory;
+    public GameObject market;
     public PlayerController pc;
 
     private GameObject selector;
     private bool hovering;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         selector = this.gameObject.transform.GetChild(0).gameObject;
     }
+    void Update(){
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Tab)){
-            if(pc.currentUIOpen == null){
-                Open();
-            }
-        }
+
         selector.SetActive(hovering);
         hovering = false;
     }
@@ -34,13 +27,12 @@ public class InvManager : MonoBehaviour
             Open();
         }
     }
-
     public void Open(){
-        inventory.SetActive(true);
-        pc.setCurrentUIOpen(inventory);
+        market.SetActive(true);
+        pc.setCurrentUIOpen(market);
     }
     public void Close(){
-        if(pc.currentUIOpen == inventory)
+        if(pc.currentUIOpen == market)
             pc.closeCurrentUIOpen();
     }
 }

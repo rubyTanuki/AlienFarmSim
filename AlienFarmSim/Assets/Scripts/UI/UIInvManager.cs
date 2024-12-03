@@ -26,7 +26,7 @@ public class UIInvManager : MonoBehaviour
             Destroy(seedContent.transform.GetChild(i).gameObject);
         }
         for(int i=0;i<cropContent.transform.childCount;i++){
-            Destroy(seedContent.transform.GetChild(i).gameObject);
+            Destroy(cropContent.transform.GetChild(i).gameObject);
         }
 
         // if(seedContent.transform.childCount!= 0){

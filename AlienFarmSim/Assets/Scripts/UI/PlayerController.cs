@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(IsPointerOverUIElement() ? "Over UI" : "Not over UI");
         if(UIOpen.Count>0) currentUIOpen = UIOpen.Peek();
+        else currentUIOpen = null;
 
         List<RaycastResult> results = GetEventSystemRaycastResults();
 
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown("escape") && UIOpen.Count>0)
+        if((Input.GetKeyDown("escape") || Input.GetKeyDown(KeyCode.Tab)) && currentUIOpen!=null)
         {
             closeCurrentUIOpen();
         }

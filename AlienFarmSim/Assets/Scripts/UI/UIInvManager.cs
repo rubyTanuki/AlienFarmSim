@@ -22,18 +22,12 @@ public class UIInvManager : MonoBehaviour
 
     void OnEnable(){
         //remove previous selector slots
-
-        while(seedContent.transform.childCount>0){
-            Destroy(seedContent.transform.GetChild(0));
+        for(int i=0;i<seedContent.transform.childCount;i++){
+            Destroy(seedContent.transform.GetChild(i).gameObject);
         }
-        // // for(int i=seedContent.transform.childCount-1;i>=0;i--){
-
-        // // }
-        while(cropContent.transform.childCount>0){
-            Destroy(seedContent.transform.GetChild(0));
+        for(int i=0;i<cropContent.transform.childCount;i++){
+            Destroy(seedContent.transform.GetChild(i).gameObject);
         }
-
-        
 
         // if(seedContent.transform.childCount!= 0){
         //     foreach(GameObject child in seedContent.transform){

@@ -22,10 +22,16 @@ public class UIInvSelectorSlot : MonoBehaviour
 
     public bool isHovering = false;
 
+    private GameObject category;
+
     void Awake()
     {
         img = imageObj.GetComponent<Image>();
         //populateData();
+    }
+
+    void Start(){
+        category = this.gameObject.transform.parent.parent.parent.parent.gameObject;
     }
 
 
@@ -33,8 +39,8 @@ public class UIInvSelectorSlot : MonoBehaviour
     {
         if(hover.activeSelf){
             if(Input.GetMouseButtonDown(0)){
-                //Debug.Log("Select");
-                GameObject.Find("UICanvas/InventoryUI").GetComponent<UIInvManager>().selectedItem = item;
+                category.GetComponent<UIInvCategoryManager>().selectedItem = item;
+                //GameObject.Find("UICanvas/InventoryUI/").GetComponent<UIInvManager>().selectedItem = item;
             }
         }
 

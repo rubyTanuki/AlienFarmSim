@@ -15,12 +15,12 @@ public class UIInvDescriptionManager : MonoBehaviour
     [SerializeField] private GameObject statPrefab;
 
     private ItemSO item;
-    private UIInvManager manager;
+    private UIInvCategoryManager manager;
     // Start is called before the first frame update
     void Start()
     {
         img = imageObject.GetComponent<Image>().sprite;
-        manager = GameObject.Find("UICanvas/InventoryUI").GetComponent<UIInvManager>();
+        manager = this.gameObject.transform.parent.gameObject.GetComponent<UIInvCategoryManager>();
         item = manager.selectedItem;
         if(item!=null){
             name.SetText(item.name);

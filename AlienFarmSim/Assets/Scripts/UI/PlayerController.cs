@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
                 case "PlantSelectorSlot":
                     curRaycastResult.gameObject.GetComponent<UIPSSlot>().setSelected(true);
                     break;
+                case "MarketSelectorSlot":
+                    curRaycastResult.gameObject.GetComponent<UIMarketSelectorSlot>().setHover(true);
+                    break;
             }
         }
 

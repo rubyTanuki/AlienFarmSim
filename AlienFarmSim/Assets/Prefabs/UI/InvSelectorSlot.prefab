@@ -531,6 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 6588144886603210164}
   scrollSpeed: 1.5
+  scrollPos: 0
 --- !u!114 &2938553721010593436
 MonoBehaviour:
   m_ObjectHideFlags: 0

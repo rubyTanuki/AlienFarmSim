@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New CropSO", menuName = "CropSO")]
 public class CropSO : ItemSO
 {
-    public float baseValue;
+    
 }

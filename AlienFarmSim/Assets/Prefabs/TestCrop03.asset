@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Test Crop 03
   description: this is a test crop. it's standard value is 35 coins
   image: {fileID: 21300000, guid: 7c6de30ffe13e4c5faea9d78903c7902, type: 3}
-  baseValue: 35
+  baseValue: 43

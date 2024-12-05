@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Test Plant 01 test test test
   description: this is a test plant. it grows in 5 seconds
   image: {fileID: -14139997, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
+  baseValue: 6
   growthTime: 5
   sprites:
   - {fileID: -1709811326, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}

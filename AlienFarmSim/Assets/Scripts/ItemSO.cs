@@ -9,4 +9,5 @@ public class ItemSO : ScriptableObject
     public string description;
 
     public Sprite image;
+    public int baseValue;
 }

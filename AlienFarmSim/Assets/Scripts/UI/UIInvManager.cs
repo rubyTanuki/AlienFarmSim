@@ -73,12 +73,13 @@ public class UIInvManager : MonoBehaviour
         }
     }
     
-    private void addNewSelectorSlot(ItemSO item, int count, GameObject content){
+    private void addNewSelectorSlot(ItemSO item, int c, GameObject content){
         GameObject slot = Instantiate(slotPrefab);
         UIInvSelectorSlot slotScript = slot.GetComponent<UIInvSelectorSlot>();
         slotScript.setItem(item);
-        slotScript.count = count;
+        slotScript.setCount(c);
         slot.transform.SetParent(content.transform);
         slot.transform.localScale = new Vector3(1,1,1);
+        slotScript.populateData();
     }
 }

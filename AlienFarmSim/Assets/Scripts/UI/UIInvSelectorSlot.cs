@@ -53,16 +53,17 @@ public class UIInvSelectorSlot : MonoBehaviour
 
     public void setItem(ItemSO i){
         item = i;
-        populateData();
     }
     public void populateData(){
         name.SetText(item.name);
         description.SetText(item.description);
-        num.SetText(count + "");
+        string zeros = "";
+        if(count<10) zeros = "00";
+        else if(count<100) zeros = "0";
+        num.SetText(zeros + count);
         img.sprite = item.image;
     }
     public void setCount(int c){
         count = c;
-        populateData();
     }
 }

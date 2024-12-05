@@ -8,6 +8,7 @@ public class UIMarketSelectorSlot : MonoBehaviour
 {
     [SerializeField] private ItemSO item;
     private int numInInv;
+    private int value;
     
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI description;
@@ -19,13 +20,7 @@ public class UIMarketSelectorSlot : MonoBehaviour
     private bool isHovering;
 
     void OnEnable(){
-        if(item != null){
-            name.SetText(item.name);
-            description.SetText(item.description);
-            image.sprite = item.image;
-            count.SetText("" + numInInv);
-            price.SetText(" " + "TBD");
-        }
+        updateInfo();
     }
 
     void Update(){
@@ -38,7 +33,28 @@ public class UIMarketSelectorSlot : MonoBehaviour
     public void setItem(ItemSO i){
         item = i;
     }
+
+    public void updateInfo(){
+        if(item!=null){
+            name.SetText(item.name);
+            description.SetText(item.description);
+            image.sprite = item.image;
+            string zeros = "";
+            if(numInInv<10) zeros = "00";
+            else if(numInInv<100)zeros = "0";
+
+            count.SetText(zeros + numInInv);
+
+            if(value<10) zeros = "000";
+            else if(value<100) zeros = "00";
+            else if(value<1000) zeros = "0";
+            price.SetText(zeros + value);
+        }
+    }
     public void setNumInInv(int n){
         numInInv = n;
+    }
+    public void setPrice(int v){
+        value = v;
     }
 }

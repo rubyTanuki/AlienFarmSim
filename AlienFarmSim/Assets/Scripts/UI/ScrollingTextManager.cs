@@ -25,7 +25,7 @@ public class ScrollingTextManager : MonoBehaviour
     {
         textRectTransform = text.GetComponent<RectTransform>();
         sourceText = text.text;
-        createClone();
+        //createClone();
     }
 
     // Start is called before the first frame update
@@ -35,6 +35,9 @@ public class ScrollingTextManager : MonoBehaviour
         infoWidth = GetComponent<RectTransform>().rect.width + 10;
         //textRectTransform.anchoredPosition = new Vector3(0, 15, 0);
         StartCoroutine(Scroll());
+    }
+    void Start(){
+        infoWidth = GetComponent<RectTransform>().rect.width + 10;
     }
 
     public void startScroll(){
@@ -68,7 +71,7 @@ public class ScrollingTextManager : MonoBehaviour
             //scroll by moving rect transform
             textRectTransform.anchoredPosition = new Vector3((-scrollPosition%width), startPosition.y, startPosition.z);
             textRectTransform.anchoredPosition = new Vector3(textRectTransform.anchoredPosition.x + startPosition.x, startPosition.y, startPosition.z);
-            if(scrollPosition%width < scrollSpeed * 20 * Time.deltaTime) yield return new WaitForSeconds(1.5f);
+            if(scrollPosition%width < scrollSpeed * 20 * Time.deltaTime) yield return new WaitForSeconds(1f);
             if(scrollPosition>width) scrollPosition = 0;
             scrollPos = scrollPosition%width;
             

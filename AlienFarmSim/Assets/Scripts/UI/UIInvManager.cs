@@ -6,6 +6,7 @@ public class UIInvManager : MonoBehaviour
 {
     public Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
     public Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
+    public Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
 
     [SerializeField] private GameObject seedUI;
     [SerializeField] private GameObject cropUI;
@@ -28,17 +29,10 @@ public class UIInvManager : MonoBehaviour
         for(int i=0;i<cropContent.transform.childCount;i++){
             Destroy(cropContent.transform.GetChild(i).gameObject);
         }
-
-        // if(seedContent.transform.childCount!= 0){
-        //     foreach(GameObject child in seedContent.transform){
-        //         GameObject.Destroy(child);
-        //     }
-        // }
-        // if(cropContent.transform.childCount!= 0){
-        //     foreach(GameObject child in cropContent.transform){
-        //         GameObject.Destroy(child);
-        //     }
-        // }
+        for(int i=0;i<itemContent.transform.childCount;i++){
+            Destroy(itemContent.transform.GetChild(i).gameObject);
+        }
+        
         
 
         //populate with updated slots

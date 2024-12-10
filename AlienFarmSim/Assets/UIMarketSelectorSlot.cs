@@ -9,6 +9,8 @@ public class UIMarketSelectorSlot : MonoBehaviour
     [SerializeField] private ItemSO item;
     private int numInInv;
     private int value;
+
+    private UIMarketManager manager;
     
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI description;
@@ -18,14 +20,24 @@ public class UIMarketSelectorSlot : MonoBehaviour
 
     [SerializeField] private GameObject hover;
     private bool isHovering;
-
+    private bool lastLeftClick = false;
+   
     void OnEnable(){
         updateInfo();
     }
+    void Start(){
+        manager = GameObject.Find("UICanvas/Market").GetComponent<UIMarketManager>();
+    }
 
     void Update(){
+        bool leftClick = Input.GetMouseButtonDown(0);
+        if(leftClick && hover.activeSelf){
+            manager.selectedItem = item;
+            manager.updateSelected();
+        }
         hover.SetActive(isHovering);
         isHovering = false;
+        lastLeftClick = leftClick;
     }
     public void setHover(bool b){ isHovering = b; }
 

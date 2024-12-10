@@ -33,7 +33,7 @@ public class ScrollingTextManager : MonoBehaviour
     {
         sourceText = text.text;
         infoWidth = GetComponent<RectTransform>().rect.width + 10;
-        //textRectTransform.anchoredPosition = new Vector3(0, 15, 0);
+        textRectTransform.anchoredPosition = new Vector3(0, textRectTransform.anchoredPosition.y, 0);
         StartCoroutine(Scroll());
     }
     void Start(){
@@ -77,6 +77,8 @@ public class ScrollingTextManager : MonoBehaviour
             
             if(width>infoWidth){
                 scrollPosition += scrollSpeed * 20 * Time.deltaTime;
+            }else{
+                textRectTransform.anchoredPosition = new Vector3(0, textRectTransform.anchoredPosition.y, 0);
             }
             yield return null;
         }

@@ -7,13 +7,13 @@ using TMPro;
 public class UIMarketManager : MonoBehaviour
 {
     [SerializeField] private GameObject selectorPrefab;
-    [SerializeField] private GameObject seedSelectorContent;
-    [SerializeField] private GameObject cropSelectorContent;
-    [SerializeField] private GameObject itemSelectorContent;
+    [SerializeField] private GameObject sellSelectorContent;
+    [SerializeField] private GameObject generalSelectorContent;
+    [SerializeField] private GameObject planetarySelectorContent;
 
-    private GameObject seedListObject;
-    private GameObject cropListObject;
-    private GameObject itemListObject;
+    private GameObject sellListObject;
+    private GameObject generalListObject;
+    private GameObject planetaryListObject;
     [SerializeField] private GameObject invManager;
     private UIInvManager invManagerScript;
 
@@ -33,9 +33,9 @@ public class UIMarketManager : MonoBehaviour
     void Awake()
     {
         invManagerScript = invManager.GetComponent<UIInvManager>();
-        seedListObject = seedSelectorContent.transform.parent.parent.parent.gameObject;
-        cropListObject = cropSelectorContent.transform.parent.parent.parent.gameObject;
-        itemListObject = itemSelectorContent.transform.parent.parent.parent.gameObject;
+        sellListObject = sellSelectorContent.transform.parent.parent.parent.gameObject;
+        generalListObject = generalSelectorContent.transform.parent.parent.parent.gameObject;
+        planetaryListObject = planetarySelectorContent.transform.parent.parent.parent.gameObject;
     }
 
     void OnEnable(){
@@ -62,26 +62,26 @@ public class UIMarketManager : MonoBehaviour
 
     public void populateSelectors(){
         //destroy all outdated selector slots
-        GameObject[] contents = {seedSelectorContent, cropSelectorContent, itemSelectorContent};
+        GameObject[] contents = {sellSelectorContent, generalSelectorContent, planetarySelectorContent};
         foreach(GameObject content in contents){
             for(int i=0;i<content.transform.childCount;i++){
                 Destroy(content.transform.GetChild(i).gameObject);
             }
         }
+        
+        //add all objects in inv to sell list
 
         //add all the plant objects
         foreach(KeyValuePair<PlantSO, int> kvp in inventory.seedInventory){
-            instantiateSelectorSlot(kvp.Key, kvp.Value, seedSelectorContent);
+            instantiateSelectorSlot(kvp.Key, kvp.Value, sellSelectorContent);
         }
-
         //add all the crop objects
         foreach(KeyValuePair<CropSO, int> kvp in inventory.cropInventory){
-            instantiateSelectorSlot(kvp.Key, kvp.Value, cropSelectorContent);
+            instantiateSelectorSlot(kvp.Key, kvp.Value, sellSelectorContent);
         }
-
         //add all the item objects
         foreach(KeyValuePair<ItemSO, int> kvp in inventory.itemInventory){
-            instantiateSelectorSlot(kvp.Key, kvp.Value, itemSelectorContent);
+            instantiateSelectorSlot(kvp.Key, kvp.Value, sellSelectorContent);
         }
     }
 
@@ -149,22 +149,22 @@ public class UIMarketManager : MonoBehaviour
 
 
     public void closeAll(){
-        seedListObject.SetActive(false);
-        cropListObject.SetActive(false);
-        itemListObject.SetActive(false);
+        sellListObject.SetActive(false);
+        generalListObject.SetActive(false);
+        planetaryListObject.SetActive(false);
     }
 
     public void openSeedContent(){
         closeAll();
-        seedListObject.SetActive(true);
+        sellListObject.SetActive(true);
     }
-    public void openCropContent(){
+    public void openGeneralContent(){
         closeAll();
-        cropListObject.SetActive(true);
+        generalListObject.SetActive(true);
     }
-    public void openItemContent(){
+    public void openPlanetaryContent(){
         closeAll();
-        itemListObject.SetActive(true);
+        planetaryListObject.SetActive(true);
     }
 
     public void sellSelectedItem(){

@@ -866,10 +866,12 @@ MonoBehaviour:
   currentSelected: []
   selectedPlant: {fileID: 0}
   plantSelector: {fileID: 3618269994064695255}
+  plantSelectorSlotPrefab: {fileID: 3895726323750304481, guid: 2ef22dfca57db4462ad7ab07456386e2, type: 3}
   rows:
   - {fileID: 6913883372529325053}
   - {fileID: 4671738754709878356}
   - {fileID: 8975933404452638579}
+  selectorContent: {fileID: 2665672514589649871}
   invManager: {fileID: 0}
 --- !u!1001 &2962967259666372833
 PrefabInstance:
@@ -1084,13 +1086,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2465744389960003473, guid: e55422061adec47aa94b33dd5acefadc, type: 3}
+    - {fileID: 4261035711284628667, guid: e55422061adec47aa94b33dd5acefadc, type: 3}
+    - {fileID: 4204497877434015916, guid: e55422061adec47aa94b33dd5acefadc, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5864115885470863360, guid: e55422061adec47aa94b33dd5acefadc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2055763808500880366}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55422061adec47aa94b33dd5acefadc, type: 3}
+--- !u!1 &2665672514589649871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000023423657030446, guid: e55422061adec47aa94b33dd5acefadc, type: 3}
+  m_PrefabInstance: {fileID: 2962967259666372833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3618269994064695255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1956882644023678774, guid: e55422061adec47aa94b33dd5acefadc, type: 3}

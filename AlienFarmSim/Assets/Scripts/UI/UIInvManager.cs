@@ -25,7 +25,6 @@ public class UIInvManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
     public int money;
 
-
     void OnEnable(){
         //remove previous selector slots
         for(int i=0;i<seedContent.transform.childCount;i++){
@@ -42,6 +41,9 @@ public class UIInvManager : MonoBehaviour
 
         //populate with updated slots
         populateSelectorSlots();
+    }
+    void Start(){
+        
     }
 
     void Update(){

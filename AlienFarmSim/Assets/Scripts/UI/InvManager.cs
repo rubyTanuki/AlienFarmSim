@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InvManager : MonoBehaviour
 {
-    public GameObject inventory;
+
+    public GameObject inventoryUI;
     public PlayerController pc;
 
     private GameObject selector;
@@ -36,11 +37,11 @@ public class InvManager : MonoBehaviour
     }
 
     public void Open(){
-        inventory.SetActive(true);
-        pc.setCurrentUIOpen(inventory);
+        inventoryUI.SetActive(true);
+        pc.setCurrentUIOpen(inventoryUI);
     }
     public void Close(){
-        if(pc.currentUIOpen == inventory)
+        if(pc.currentUIOpen == inventoryUI)
             pc.closeCurrentUIOpen();
     }
 }

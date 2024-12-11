@@ -13,7 +13,7 @@ public class UIPSSlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        image.GetComponent<Image>().sprite = plant.sprites[4];
+        
     }
 
     // Update is called once per frame
@@ -30,5 +30,9 @@ public class UIPSSlot : MonoBehaviour
 
     public void setSelected(bool s){
         select = s;
+    }
+
+    public void updateImage(){
+        image.GetComponent<Image>().sprite = plant.sprites[4];
     }
 }

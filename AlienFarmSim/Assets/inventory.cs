@@ -43,31 +43,39 @@ public static class inventory
     //removing seeds
 
     public static void subFromInventory(PlantSO p){
-        if(seedInventory.ContainsKey(p))
+        Debug.Log("subtracting 1 " + p);
+        if(seedInventory.ContainsKey(p)){
             seedInventory[p]--;
-        if(seedInventory[p]<=0)
-            seedInventory.Remove(p);
+            if(seedInventory[p]<=0)
+                seedInventory.Remove(p);
+        }
     }
     public static void subFromInventory(PlantSO p, int i){
-        if(seedInventory.ContainsKey(p))
+        Debug.Log("subtracting " + i + " " + p);
+        if(seedInventory.ContainsKey(p)){
             seedInventory[p]-=i;
-        if(seedInventory[p]<=0)
-            seedInventory.Remove(p);
+            if(seedInventory[p]<=0)
+                seedInventory.Remove(p);
+        }
+        
     }
 
     //removing crops
 
     public static void subFromInventory(CropSO c){
-        if(cropInventory.ContainsKey(c))
+        if(cropInventory.ContainsKey(c)){
             cropInventory[c]--;
-        if(cropInventory[c]<=0)
-            cropInventory.Remove(c);
+            if(cropInventory[c]<=0)
+                cropInventory.Remove(c);
+        }
     }
     public static void subFromInventory(CropSO c, int i){
-        if(cropInventory.ContainsKey(c))
+        if(cropInventory.ContainsKey(c)){
             cropInventory[c]-=i;
-        if(cropInventory[c]<=0)
-            cropInventory.Remove(c);
+            if(cropInventory[c]<=0)
+                cropInventory.Remove(c);
+        }
+            
     }
 
     //removing items

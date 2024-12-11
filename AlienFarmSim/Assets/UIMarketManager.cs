@@ -169,9 +169,18 @@ public class UIMarketManager : MonoBehaviour
 
     public void sellSelectedItem(){
         invManagerScript.money += selectedItem.baseValue*numToSell;
-        if(inventory.containsItem(selectedItem)){
-            inventory.subFromInventory(selectedItem, numToSell);
+        Debug.Log("" + selectedItem.GetType());
+        if(selectedItem is PlantSO p){
+            inventory.subFromInventory(p, numToSell);
+            if(!inventory.containsItem(p))selectedItem = null;
+        }else if(selectedItem is CropSO c){
+            inventory.subFromInventory(c, numToSell);
+            if(!inventory.containsItem(c))selectedItem = null;
+        }else if(selectedItem is ItemSO i){
+            inventory.subFromInventory(i, numToSell);
+            if(!inventory.containsItem(i))selectedItem = null;
         }
+        
         // if(!inventory.containsItem(selectedItem)){
         //     selectedItem = null;
         // }

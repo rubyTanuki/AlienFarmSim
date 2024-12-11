@@ -2,47 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class inventory : MonoBehaviour
+public static class inventory
 {
 
     //Call subFromInventory(ItemSO) or (ItemSO, int) for removing
     //Call addToInventory(ItemSO) or (ItemSO, int) for adding
 
 
-    private int money;
+    private static int money;
 
-    public Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
-    public Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
-    public Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
+    public static Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
+    public static Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
+    public static Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
 
-    public List<PlantSO> starterSeeds = new List<PlantSO>();
-
-
+    public static List<PlantSO> starterSeeds = new List<PlantSO>();
 
 
-    void Start(){
-        money = 999;
-        foreach(PlantSO plant in starterSeeds){
-            seedInventory.Add(plant, 6);
-        }
+    public static int  getMoney()            { return money; }
+    public static void setMoney(int m)       { money = m;    }
+    public static void addMoney(int m)       { money+=m;     }
+    public static void subMoney(int m)  { money-=m;     }
+
+
+    public static bool containsItem(PlantSO p){
+        return seedInventory.ContainsKey(p);
+    }
+    public static bool containsItem(CropSO c){
+        return cropInventory.ContainsKey(c);
+    }
+    public static bool containsItem(ItemSO i){
+        return itemInventory.ContainsKey(i);
     }
 
-    public int  getMoney()            { return money; }
-    public void setMoney(int m)       { money = m;    }
-    public void addMoney(int m)       { money+=m;     }
-    public void subMoney(int m)  { money-=m;     }
+
+
+
 
 
 
     //removing seeds
 
-    public void subFromInventory(PlantSO p){
+    public static void subFromInventory(PlantSO p){
         if(seedInventory.ContainsKey(p))
             seedInventory[p]--;
         if(seedInventory[p]<=0)
             seedInventory.Remove(p);
     }
-    public void subFromInventory(PlantSO p, int i){
+    public static void subFromInventory(PlantSO p, int i){
         if(seedInventory.ContainsKey(p))
             seedInventory[p]-=i;
         if(seedInventory[p]<=0)
@@ -51,13 +57,13 @@ public class inventory : MonoBehaviour
 
     //removing crops
 
-    public void subFromInventory(CropSO c){
+    public static void subFromInventory(CropSO c){
         if(cropInventory.ContainsKey(c))
             cropInventory[c]--;
         if(cropInventory[c]<=0)
             cropInventory.Remove(c);
     }
-    public void subFromInventory(CropSO c, int i){
+    public static void subFromInventory(CropSO c, int i){
         if(cropInventory.ContainsKey(c))
             cropInventory[c]-=i;
         if(cropInventory[c]<=0)
@@ -66,13 +72,13 @@ public class inventory : MonoBehaviour
 
     //removing items
 
-    public void subFromInventory(ItemSO n){
+    public static void subFromInventory(ItemSO n){
         if(itemInventory.ContainsKey(n))
             itemInventory[n]--;
         if(itemInventory[n]<=0)
             itemInventory.Remove(n);
     }
-    public void subFromInventory(ItemSO n, int i){
+    public static void subFromInventory(ItemSO n, int i){
         if(itemInventory.ContainsKey(n))
             itemInventory[n]-=i;
         if(itemInventory[n]<=0)
@@ -82,14 +88,16 @@ public class inventory : MonoBehaviour
 
     //adding plants
 
-    public void addToInventory(PlantSO p){
+    public static void addToInventory(PlantSO p){
+        Debug.Log("Added plant " + p);
         if(seedInventory.ContainsKey(p)){
             seedInventory[p]++;
         }else{
             seedInventory.Add(p, 1);
         }
     }
-    public void addToInventory(PlantSO p, int i){
+    public static void addToInventory(PlantSO p, int i){
+        Debug.Log("Added plant " + p);
         if(seedInventory.ContainsKey(p)){
             seedInventory[p]+=i;
         }else{
@@ -99,14 +107,16 @@ public class inventory : MonoBehaviour
 
     //adding crops
 
-    public void addToInventory(CropSO c){
+    public static void addToInventory(CropSO c){
+        Debug.Log("Added crop " + c);
         if(cropInventory.ContainsKey(c)){
             cropInventory[c]++;
         }else{
             cropInventory.Add(c, 1);
         }
     }
-    public void addToInventory(CropSO c, int i){
+    public static void addToInventory(CropSO c, int i){
+        Debug.Log("Added crop " + c);
         if(cropInventory.ContainsKey(c)){
             cropInventory[c]+=i;
         }else{
@@ -116,14 +126,16 @@ public class inventory : MonoBehaviour
 
     //adding items
 
-    public void addToInventory(ItemSO n){
+    public static void addToInventory(ItemSO n){
+        Debug.Log("Added item " + n);
         if(itemInventory.ContainsKey(n)){
             itemInventory[n]++;
         }else{
             itemInventory.Add(n, 1);
         }
     }
-    public void addToInventory(ItemSO n, int i){
+    public static void addToInventory(ItemSO n, int i){
+        Debug.Log("Added item " + n);
         if(itemInventory.ContainsKey(n)){
             itemInventory[n]+=i;
         }else{

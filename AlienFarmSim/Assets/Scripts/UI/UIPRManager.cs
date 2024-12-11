@@ -47,12 +47,12 @@ public class UIPRManager : MonoBehaviour
             Destroy(selectorContent.transform.GetChild(i).gameObject);
         }
 
-        foreach(KeyValuePair<PlantSO, int> kvp in invManager.seedInventory){
+        foreach(KeyValuePair<PlantSO, int> kvp in inventory.seedInventory){
             GameObject item = Instantiate(plantSelectorSlotPrefab);
             item.transform.SetParent(selectorContent.transform);
             item.transform.localScale = new Vector3(1,1,1);
             UIPSSlot script = item.GetComponent<UIPSSlot>();
-            script.plant = kvp.Key;
+            script.setPlant(kvp.Key);
             script.updateImage();
         }
     }
@@ -66,11 +66,26 @@ public class UIPRManager : MonoBehaviour
     }
 
     public void Plant(PlantSO p){
-        foreach (UIPRSlot slot in currentSelected){
-            slot.plant.setPlant(p);
-            slot.plant.resetPlant();
+        if(inventory.seedInventory[p]>=currentSelected.Count){
+            foreach (UIPRSlot slot in currentSelected){
+                slot.harvest();
+                slot.plant.setPlant(p);
+                slot.plant.resetPlant();
+            }
+            inventory.subFromInventory(p, currentSelected.Count);
+        }else{
+            while(inventory.seedInventory[p]<currentSelected.Count){
+                currentSelected.RemoveAt(0);
+            }
+            foreach (UIPRSlot slot in currentSelected){
+                slot.harvest();
+                slot.plant.setPlant(p);
+                slot.plant.resetPlant();
+            }
+            inventory.subFromInventory(p, currentSelected.Count);
         }
         clearSelected();
+        updateSelectors();
     }
 
     

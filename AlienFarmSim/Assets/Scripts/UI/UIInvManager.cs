@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using TMPro;
 
 public class UIInvManager : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class UIInvManager : MonoBehaviour
 
     public ItemSO selectedItem;
 
+    [SerializeField] private TextMeshProUGUI moneyText;
+    public int money;
+
 
     void OnEnable(){
         //remove previous selector slots
@@ -37,6 +42,18 @@ public class UIInvManager : MonoBehaviour
 
         //populate with updated slots
         populateSelectorSlots();
+    }
+
+    void Update(){
+        updateMoneyText();
+    }
+
+    void updateMoneyText(){
+        string s = "" + money;
+        while(s.Length<7) s = "0" + s;
+        if(Int32.Parse(moneyText.text) != money){
+            moneyText.SetText(s);
+        }
     }
 
     public void closeAll(){

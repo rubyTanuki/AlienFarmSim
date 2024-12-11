@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -26,6 +27,8 @@ public class UIMarketManager : MonoBehaviour
     private int numToSell;
     private int numOfItems;
 
+    [SerializeField] TextMeshProUGUI moneyText;
+
 
     void Awake()
     {
@@ -45,6 +48,15 @@ public class UIMarketManager : MonoBehaviour
         if(numToSell>numOfItems){
             numToSell = numOfItems;
             updateNumToSell();
+        }
+        updateMoneyText();
+    }
+
+    void updateMoneyText(){
+        if(Int32.Parse(moneyText.text) != invManagerScript.money){
+            string s = "" + invManagerScript.money;
+            while(s.Length<7) s = "0" + s;
+            moneyText.SetText(s);
         }
     }
 
@@ -75,39 +87,47 @@ public class UIMarketManager : MonoBehaviour
 
 
     public void updateSelected(){
-        selectedName.SetText(selectedItem.name);
-        RectTransform rt = selectedName.gameObject.GetComponent<RectTransform>();
-        rt.anchoredPosition = new Vector3(0, rt.anchoredPosition.y, 0);
-        selectedDescription.SetText(selectedItem.description);
-        int count = 0;
-        var type = selectedItem.GetType();
-        if(type.Equals(typeof(PlantSO))){
-            PlantSO p = (PlantSO)selectedItem;
-            count = invManagerScript.seedInventory[p];
-            numOfItems = invManagerScript.seedInventory[p];
-        }else if(type.Equals(typeof(CropSO))){
-            CropSO c = (CropSO)selectedItem;
-            count = invManagerScript.cropInventory[c];
-            numOfItems = invManagerScript.cropInventory[c];
-        }
+        if(selectedItem != null){
+            selectedName.SetText(selectedItem.name);
+            RectTransform rt = selectedName.gameObject.GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector3(0, rt.anchoredPosition.y, 0);
+            selectedDescription.SetText(selectedItem.description);
+            int count = 0;
+            var type = selectedItem.GetType();
+            if(type.Equals(typeof(PlantSO))){
+                PlantSO p = (PlantSO)selectedItem;
+                count = invManagerScript.seedInventory[p];
+                numOfItems = invManagerScript.seedInventory[p];
+            }else if(type.Equals(typeof(CropSO))){
+                CropSO c = (CropSO)selectedItem;
+                count = invManagerScript.cropInventory[c];
+                numOfItems = invManagerScript.cropInventory[c];
+            }
 
-        string countString = "";
-        if(count<10) countString = "00" + count;
-        else if(count<100) countString = "0" + count;
-        else countString = "" + count;
-        selectedCount.SetText(countString);
+            string countString = "";
+            if(count<10) countString = "00" + count;
+            else if(count<100) countString = "0" + count;
+            else countString = "" + count;
+            selectedCount.SetText(countString);
+        }
     }
 
     public void increaseNumToSell(){
         if(numToSell<numOfItems){
-            ++numToSell;
+            if(Input.GetKey(KeyCode.LeftControl)){
+                numToSell = numOfItems;
+            } 
+            else ++numToSell;
             numToSellText.SetText("" + numToSell);
         }
     }
 
     public void decreaseNumToSell(){
         if(numToSell>0){
-            --numToSell;
+            if(Input.GetKey(KeyCode.LeftControl)){
+                numToSell = 0;
+            }
+            else --numToSell;
             numToSellText.SetText("" + numToSell);
         }
     }
@@ -145,5 +165,37 @@ public class UIMarketManager : MonoBehaviour
     public void openItemContent(){
         closeAll();
         itemListObject.SetActive(true);
+    }
+
+    public void sellSelectedItem(){
+        var type = selectedItem.GetType();
+        if(type.Equals(typeof(PlantSO))){
+            PlantSO p = (PlantSO)selectedItem;
+            invManagerScript.seedInventory[p] = invManagerScript.seedInventory[p]-numToSell;
+            if(invManagerScript.seedInventory[p] == 0){
+                invManagerScript.seedInventory.Remove(p);
+                selectedItem = null;
+            }
+            invManagerScript.money += p.baseValue*numToSell;
+
+        }else if(type.Equals(typeof(CropSO))){
+            CropSO c = (CropSO)selectedItem;
+            invManagerScript.cropInventory[c] = invManagerScript.cropInventory[c]-numToSell;
+            if(invManagerScript.cropInventory[c] == 0){
+                invManagerScript.cropInventory.Remove(c);
+                selectedItem = null;
+            }
+            invManagerScript.money += c.baseValue*numToSell;
+        }else{
+            invManagerScript.itemInventory[selectedItem] = invManagerScript.itemInventory[selectedItem]-numToSell;
+            if(invManagerScript.itemInventory[selectedItem] == 0){
+                invManagerScript.itemInventory.Remove(selectedItem);
+                selectedItem = null;
+            }
+            invManagerScript.money += selectedItem.baseValue*numToSell;
+        }
+
+        populateSelectors();
+        updateSelected();
     }
 }

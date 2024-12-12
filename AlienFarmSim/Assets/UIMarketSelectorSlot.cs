@@ -10,7 +10,7 @@ public class UIMarketSelectorSlot : MonoBehaviour
     private int numInInv;
     private int value;
 
-    private UIMarketManager manager;
+    private UIMarket manager;
     
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI description;
@@ -26,8 +26,9 @@ public class UIMarketSelectorSlot : MonoBehaviour
         updateInfo();
     }
     void Start(){
-        manager = GameObject.Find("UICanvas/Market").GetComponent<UIMarketManager>();
+        manager = this.gameObject.transform.parent.parent.parent.parent.gameObject.GetComponent<UIMarket>();
     }
+
 
     void Update(){
         bool leftClick = Input.GetMouseButtonDown(0);

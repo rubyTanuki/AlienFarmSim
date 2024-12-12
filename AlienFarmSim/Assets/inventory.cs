@@ -9,7 +9,7 @@ public static class inventory
     //Call addToInventory(ItemSO) or (ItemSO, int) for adding
 
 
-    private static int money;
+    private static int money = 999;
 
     public static Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
     public static Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();

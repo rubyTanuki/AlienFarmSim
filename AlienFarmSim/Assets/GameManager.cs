@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SceneManager.LoadScene("TestRoom", LoadSceneMode.Additive);
+        SceneManager.LoadScene("TestRoom", LoadSceneMode.Additive);
         foreach(PlantSO p in starterSeeds){
             inventory.seedInventory.Add(p, 6);
         }

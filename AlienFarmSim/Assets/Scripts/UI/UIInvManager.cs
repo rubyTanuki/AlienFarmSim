@@ -6,9 +6,9 @@ using TMPro;
 
 public class UIInvManager : MonoBehaviour
 {
-    public Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
-    public Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
-    public Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
+    // public Dictionary<PlantSO, int> seedInventory = new Dictionary<PlantSO, int>();
+    // public Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
+    // public Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
 
     [SerializeField] private GameObject seedUI;
     [SerializeField] private GameObject cropUI;
@@ -51,9 +51,9 @@ public class UIInvManager : MonoBehaviour
     }
 
     void updateMoneyText(){
-        string s = "" + money;
+        string s = "" + inventory.getMoney();
         while(s.Length<7) s = "0" + s;
-        if(Int32.Parse(moneyText.text) != money){
+        if(Int32.Parse(moneyText.text) != inventory.getMoney()){
             moneyText.SetText(s);
         }
     }
@@ -77,11 +77,11 @@ public class UIInvManager : MonoBehaviour
     }
     public void populateSelectorSlots(){
         //populating seed inventory
-        foreach(KeyValuePair<PlantSO, int> seed in seedInventory){
+        foreach(KeyValuePair<PlantSO, int> seed in inventory.seedInventory){
             addNewSelectorSlot(seed.Key, seed.Value, seedContent);
         }
         //populating crop inventory
-        foreach(KeyValuePair<CropSO, int> crop in cropInventory){
+        foreach(KeyValuePair<CropSO, int> crop in inventory.cropInventory){
             addNewSelectorSlot(crop.Key, crop.Value, cropContent);
         }
     }

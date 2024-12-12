@@ -168,7 +168,7 @@ public class UIMarketManager : MonoBehaviour
     }
 
     public void sellSelectedItem(){
-        invManagerScript.money += selectedItem.baseValue*numToSell;
+        inventory.addMoney(selectedItem.baseValue*numToSell);
         Debug.Log("" + selectedItem.GetType());
         if(selectedItem is PlantSO p){
             inventory.subFromInventory(p, numToSell);
@@ -180,10 +180,6 @@ public class UIMarketManager : MonoBehaviour
             inventory.subFromInventory(i, numToSell);
             if(!inventory.containsItem(i))selectedItem = null;
         }
-        
-        // if(!inventory.containsItem(selectedItem)){
-        //     selectedItem = null;
-        // }
         
         populateSelectors();
         updateSelected();

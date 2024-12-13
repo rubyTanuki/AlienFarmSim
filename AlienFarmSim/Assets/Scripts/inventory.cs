@@ -17,6 +17,8 @@ public static class inventory
 
     public static List<PlantSO> starterSeeds = new List<PlantSO>();
 
+    public static HarvestUpdateManager updateManager;
+
 
     public static int  getMoney()            { return money; }
     public static void setMoney(int m)       { money = m;    }
@@ -43,7 +45,7 @@ public static class inventory
     //removing seeds
 
     public static void subFromInventory(PlantSO p){
-        Debug.Log("subtracting 1 " + p);
+        //Debug.Log("subtracting 1 " + p);
         if(seedInventory.ContainsKey(p)){
             seedInventory[p]--;
             if(seedInventory[p]<=0)
@@ -51,7 +53,7 @@ public static class inventory
         }
     }
     public static void subFromInventory(PlantSO p, int i){
-        Debug.Log("subtracting " + i + " " + p);
+        //Debug.Log("subtracting " + i + " " + p);
         if(seedInventory.ContainsKey(p)){
             seedInventory[p]-=i;
             if(seedInventory[p]<=0)
@@ -97,7 +99,8 @@ public static class inventory
     //adding plants
 
     public static void addToInventory(PlantSO p){
-        Debug.Log("Added plant " + p);
+        updateManager.addUpdate(p, 1);
+        //Debug.Log("Added plant " + p);
         if(seedInventory.ContainsKey(p)){
             seedInventory[p]++;
         }else{
@@ -105,7 +108,8 @@ public static class inventory
         }
     }
     public static void addToInventory(PlantSO p, int i){
-        Debug.Log("Added plant " + p);
+        updateManager.addUpdate(p, i);
+        //Debug.Log("Added plant " + p);
         if(seedInventory.ContainsKey(p)){
             seedInventory[p]+=i;
         }else{
@@ -116,7 +120,8 @@ public static class inventory
     //adding crops
 
     public static void addToInventory(CropSO c){
-        Debug.Log("Added crop " + c);
+        updateManager.addUpdate(c, 1);
+        //Debug.Log("Added crop " + c);
         if(cropInventory.ContainsKey(c)){
             cropInventory[c]++;
         }else{
@@ -124,7 +129,8 @@ public static class inventory
         }
     }
     public static void addToInventory(CropSO c, int i){
-        Debug.Log("Added crop " + c);
+        updateManager.addUpdate(c, i);
+        //Debug.Log("Added crop " + c);
         if(cropInventory.ContainsKey(c)){
             cropInventory[c]+=i;
         }else{
@@ -135,7 +141,8 @@ public static class inventory
     //adding items
 
     public static void addToInventory(ItemSO n){
-        Debug.Log("Added item " + n);
+        updateManager.addUpdate(n, 1);
+        //Debug.Log("Added item " + n);
         if(itemInventory.ContainsKey(n)){
             itemInventory[n]++;
         }else{
@@ -143,7 +150,8 @@ public static class inventory
         }
     }
     public static void addToInventory(ItemSO n, int i){
-        Debug.Log("Added item " + n);
+        updateManager.addUpdate(n, i);
+        //Debug.Log("Added item " + n);
         if(itemInventory.ContainsKey(n)){
             itemInventory[n]+=i;
         }else{

@@ -75,7 +75,7 @@ public class UIPRManager : MonoBehaviour
             inventory.subFromInventory(p, currentSelected.Count);
         }else{
             while(inventory.seedInventory[p]<currentSelected.Count){
-                currentSelected.RemoveAt(0);
+                currentSelected[0].singleDeselect();
             }
             foreach (UIPRSlot slot in currentSelected){
                 slot.harvest();

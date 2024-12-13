@@ -17,14 +17,20 @@ public class UIGeneralMarket : UIMarket
     private Dictionary<ItemSO, int> buyableItems = new Dictionary<ItemSO, int>();
 
 
-    void Start(){
+    void Awake(){
         PlantSO p = Resources.Load<PlantSO>("Items/testPlant2");
         buyableItems.Add(p, 10);
     }
+    
 
     void OnEnable(){
+        
         populateSelectors();
         updateSelected();
+    }
+
+    void Start(){
+        
     }
 
     void Update(){

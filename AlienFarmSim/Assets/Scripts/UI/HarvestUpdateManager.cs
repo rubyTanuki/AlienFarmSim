@@ -11,7 +11,7 @@ public class HarvestUpdateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        inventory.updateManager = this;
     }
 
     // Update is called once per frame

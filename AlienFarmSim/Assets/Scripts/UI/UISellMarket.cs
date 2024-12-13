@@ -20,6 +20,14 @@ public class UISellMarket : UIMarket
         if(selectedItem != null){
             manager.covered = false;
         }
+
+        if(selectedItem!=null && numToSell>sellableItems[selectedItem]){
+            numToSell = sellableItems[selectedItem];
+            updateNumToSell();
+        }else if(selectedItem!=null && numToSell<0){
+            numToSell = 0;
+            updateNumToSell();
+        }
         updateSelected();
     }
 
@@ -87,8 +95,8 @@ public class UISellMarket : UIMarket
                 numToSell = sellableItems[selectedItem];
             } 
             else ++numToSell;
-            numToSellText.SetText("" + numToSell);
         }
+        updateNumToSell();
     }
 
     public void decreaseNumToSell(){
@@ -97,20 +105,23 @@ public class UISellMarket : UIMarket
                 numToSell = 0;
             }
             else --numToSell;
-            numToSellText.SetText("" + numToSell);
         }
+        updateNumToSell();
     }
 
     public void updateNumToSell(){
-        numToSellText.SetText("" + numToSell);
+        string str = "" + numToSell;
+        while(str.Length<3) str = "0" + str;
+        numToSellText.SetText(str);
     }
 
     public void updateMarket(){
+        sellableItems.Clear();
         foreach(KeyValuePair<PlantSO, int> kvp in inventory.seedInventory){
-            sellableItems.Add(kvp.Key, kvp.Value);
+            sellableItems.Add((ItemSO)kvp.Key, kvp.Value);
         }
         foreach(KeyValuePair<CropSO, int> kvp in inventory.cropInventory){
-            sellableItems.Add(kvp.Key, kvp.Value);
+            sellableItems.Add((ItemSO)kvp.Key, kvp.Value);
         }
         foreach(KeyValuePair<ItemSO, int> kvp in inventory.itemInventory){
             sellableItems.Add(kvp.Key, kvp.Value);

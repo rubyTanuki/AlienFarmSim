@@ -43,6 +43,7 @@ public class UIMarketManager : MonoBehaviour
 
     void OnEnable(){
         //populateSelectors();
+        openSellContent();
     }
     
     void Update(){

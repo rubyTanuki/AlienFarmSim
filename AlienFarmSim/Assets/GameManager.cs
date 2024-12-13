@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
 
 
 
+
     [SerializeField] private List<PlantSO> starterSeeds = new List<PlantSO>();
     public Scene startScene;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //SceneManager.LoadScene("TestRoom", LoadSceneMode.Additive);
         foreach(PlantSO p in starterSeeds){

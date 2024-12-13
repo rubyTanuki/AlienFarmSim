@@ -48,12 +48,12 @@ public class UIPRRow : MonoBehaviour
 
     public void harvestAll(){
         foreach(UIPRSlot slot in slots){
-            HarvestUpdateManager updateManager = GameObject.Find("UICanvas/HarvestUpdates").GetComponent<HarvestUpdateManager>();
+            // HarvestUpdateManager updateManager = GameObject.Find("UICanvas/HarvestUpdates").GetComponent<HarvestUpdateManager>();
             PlantSO h = slot.harvest();
             if(h!=null){
-                updateManager.addUpdate(h, 1);
-                if(slot.plant.growthStage == 4)
-                    updateManager.addUpdate(h.crop, h.baseYield);
+                // updateManager.addUpdate(h, 1);
+                // if(slot.plant.growthStage == 4)
+                //     updateManager.addUpdate(h.crop, h.baseYield);
             }
                 
         }

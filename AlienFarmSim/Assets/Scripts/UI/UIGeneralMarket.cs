@@ -35,7 +35,7 @@ public class UIGeneralMarket : UIMarket
     }
 
     public void updateSelected(){
-        if(selectedItem!=null){
+        if(selectedItem!=null && marketContains(selectedItem)){
             selectedName.SetText(selectedItem.name);
             RectTransform rt = selectedName.gameObject.GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector3(0, rt.anchoredPosition.y, 0);
@@ -98,8 +98,13 @@ public class UIGeneralMarket : UIMarket
     }
 
     public void subItemFromMarket(ItemSO item, int i){
-        buyableItems[item]-=i;
-        if(buyableItems[item] <=0) buyableItems.Remove(item);
+        if(marketContains(item)){
+            buyableItems[item]-=i;
+            if(buyableItems[item] <=0){
+                buyableItems.Remove(item);
+                selectedItem = null;
+            }
+        }
     }
 
     public bool marketContains(ItemSO item){

@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
                 case "MarketSelectorSlot":
                     curRaycastResult.gameObject.GetComponent<UIMarketSelectorSlot>().setHover(true);
                     break;
+                case "EnvironmentSelectorSlot":
+                    curRaycastResult.gameObject.GetComponent<EnvironmentSelector>().setHover(true);
+                    break;
             }
         }
 

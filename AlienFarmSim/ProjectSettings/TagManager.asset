@@ -8,6 +8,7 @@ TagManager:
   - PlantSelectorSlot
   - InvSelectorSlot
   - MarketSelectorSlot
+  - EnvironmentSelectorSlot
   layers:
   - Default
   - TransparentFX

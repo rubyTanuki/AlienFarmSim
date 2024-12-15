@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class UIPRRowManager : MonoBehaviour
+public class UIPRRowManager : MonoBehaviour, IPointerDownHandler
 {
     private List<UIPRSlot> slots = new List<UIPRSlot>();
 
@@ -65,31 +66,48 @@ public class UIPRRowManager : MonoBehaviour
         RectTransform rectTransform = this.gameObject.GetComponent<RectTransform>();
         zoomedPosition = new Vector2(0, -400 -(185+rectTransform.anchoredPosition.y)*3.2f);
     }
+
+    float clicks = 0;
+    float clickTime = 0;
+    float clickDelay = 0.4f;
+    public virtual void OnPointerDown(PointerEventData data){
+        if(buffer && !rackManager.zoomed){
+            
+        }
+        // clicks++;
+        // if(clicks == 1) clickTime = Time.time;
+        // if(clicks >1 && Time.time-clickTime < clickDelay){
+        //     if(buffer && !rackManager.zoomed){
+        //         zoom = true;
+        //         rackManager.zoomed = true;
+        //         PlayerController.addToCloses(unZoom);
+        //     }
+        //     clicks = 0;
+        //     clickTime = 0;
+        // }else if(clicks >2 || Time.time - clickTime > 1)
+        //     clicks = 0;
+    }
     
     void Update(){
-
-        if(isHovering && Input.GetMouseButtonDown(0) && buffer && !rackManager.zoomed){
+        if(isHovering && Input.GetKeyDown(KeyCode.F) && buffer && !rackManager.zoomed){
             zoom = true;
             rackManager.zoomed = true;
             PlayerController.addToCloses(unZoom);
         }
 
-        if(Input.GetKeyDown(KeyCode.L)){
-            unZoom();
-        }
-        
         if(zoom){
             zoomIn();
             
         }else{
             zoomOut();
         }
-        
-
-
-
         isHovering = false;
     }
+
+    public bool interactable(){
+        return !rackManager.zoomed;
+    }
+    
 
     public void unZoom(){
         zoom = false;

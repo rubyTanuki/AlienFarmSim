@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
     public GameObject currentUIOpen;
     int UILayer;
 
+    private bool hoveringOverInteractable;
+    private bool lastHoveringOverInteractable;
+    private bool interactPromptActive;
+    [SerializeField] private GameObject interactPrompt;
+
     float closeBufferTime;
 
     // Start is called before the first frame update
@@ -49,7 +54,9 @@ public class PlayerController : MonoBehaviour
                     curRaycastResult.gameObject.GetComponent<EnvironmentSelector>().setHover(true);
                     break;
                 case "PlantRackRow":
-                    curRaycastResult.gameObject.GetComponent<UIPRRowManager>().setHover(true);
+                    UIPRRowManager rowManager = curRaycastResult.gameObject.GetComponent<UIPRRowManager>();
+                    if(rowManager.interactable()) activateInteractPrompt();
+                    rowManager.setHover(true);
                     break;
             }
         }
@@ -59,8 +66,21 @@ public class PlayerController : MonoBehaviour
             }else{
                 openSettings();
             }
-            
         }
+        if(!hoveringOverInteractable && lastHoveringOverInteractable){
+            interactPrompt.GetComponent<FollowMouse>().fadeOut();
+        }
+
+        
+        lastHoveringOverInteractable = hoveringOverInteractable;
+        hoveringOverInteractable = false;
+    }
+
+    public void activateInteractPrompt(){
+        hoveringOverInteractable = true;
+        interactPromptActive = true;
+        interactPrompt.SetActive(true);
+        interactPrompt.GetComponent<FollowMouse>().fadeIn();
     }
 
     public void openSettings(){

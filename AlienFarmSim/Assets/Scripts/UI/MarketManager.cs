@@ -29,10 +29,11 @@ public class MarketManager : MonoBehaviour
     }
     public void Open(){
         market.SetActive(true);
-        pc.setCurrentUIOpen(market);
+        PlayerController.addToCloses(()=>market.SetActive(false));
+        //pc.setCurrentUIOpen(market);
     }
     public void Close(){
-        if(pc.currentUIOpen == market)
-            pc.closeCurrentUIOpen();
+        // if(pc.currentUIOpen == market)
+        //     pc.closeCurrentUIOpen();
     }
 }

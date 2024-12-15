@@ -31,6 +31,6 @@ public class PRManager : MonoBehaviour
 
     public void Open(){
         rack.SetActive(true);
-        pc.setCurrentUIOpen(rack);
+        PlayerController.addToCloses(()=> rack.SetActive(false));
     }
 }

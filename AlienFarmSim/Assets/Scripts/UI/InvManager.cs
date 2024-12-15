@@ -38,10 +38,11 @@ public class InvManager : MonoBehaviour
 
     public void Open(){
         inventoryUI.SetActive(true);
-        pc.setCurrentUIOpen(inventoryUI);
+        PlayerController.addToCloses(()=>inventoryUI.SetActive(false));
+        //pc.setCurrentUIOpen(inventoryUI);
     }
     public void Close(){
-        if(pc.currentUIOpen == inventoryUI)
-            pc.closeCurrentUIOpen();
+        // if(pc.currentUIOpen == inventoryUI)
+        //     pc.closeCurrentUIOpen();
     }
 }

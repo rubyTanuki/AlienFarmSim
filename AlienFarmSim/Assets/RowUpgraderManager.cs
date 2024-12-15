@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RowUpgraderManager : MonoBehaviour
 {
-    
+    [SerializeField] private UIPRRowManager rowManager;
 
 
     // Start is called before the first frame update
@@ -17,5 +17,10 @@ public class RowUpgraderManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public UIPRRowManager getRowManager(){
+        return rowManager;
     }
 }

@@ -14,20 +14,32 @@ public class EnvironmentSelector : MonoBehaviour
 
     private RowEnvironmentSO environment;
 
+    private RowUpgraderManager upgradeManager;
+    private UIPRRowManager rowManager;
+
     private bool isHovering;
     
     // Start is called before the first frame update
     void Start()
     {
         img = spriteObject.GetComponent<Image>();
+        upgradeManager = gameObject.transform.parent.parent.parent.parent.gameObject.GetComponent<RowUpgraderManager>();
+        rowManager = upgradeManager.getRowManager();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(hover.activeSelf && Input.GetMouseButtonDown(0) && rowManager.getEnvironment()!=environment){
+            rowManager.setEnvironment(environment);
+            inventory.subMoney(environment.getPrice());
+        }
+
         hover.SetActive(isHovering);
         isHovering = false;
     }
+
+
 
     public void setHover(bool b){ isHovering = b;}
 

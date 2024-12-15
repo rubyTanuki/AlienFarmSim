@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Vector2 mousePos;
     private Vector2 mouseWorld;
-    private Stack<GameObject> UIOpen = new Stack<GameObject>();
+    private static Stack<Action> closes = new Stack<Action>();
     public GameObject currentUIOpen;
     int UILayer;
 
@@ -23,8 +24,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Debug.Log(IsPointerOverUIElement() ? "Over UI" : "Not over UI");
-        if(UIOpen.Count>0) currentUIOpen = UIOpen.Peek();
-        else currentUIOpen = null;
+        //if(UIOpen.Count>0) currentUIOpen = UIOpen.Peek();
+        //else currentUIOpen = null;
 
         List<RaycastResult> results = GetEventSystemRaycastResults();
 
@@ -47,21 +48,23 @@ public class PlayerController : MonoBehaviour
                 case "EnvironmentSelectorSlot":
                     curRaycastResult.gameObject.GetComponent<EnvironmentSelector>().setHover(true);
                     break;
+                case "PlantRackRow":
+                    curRaycastResult.gameObject.GetComponent<UIPRRowManager>().setHover(true);
+                    break;
             }
         }
-
-        if((Input.GetKeyDown("escape") || Input.GetKeyDown(KeyCode.Tab)) && currentUIOpen!=null)
-        {
-            closeCurrentUIOpen();
+        if(Input.GetKeyDown("escape")){
+            if(closes.Count!=0){
+                exitCurrentUIOpen();
+            }else{
+                openSettings();
+            }
+            
         }
     }
 
-    public void closeCurrentUIOpen(){
-        UIOpen.Pop().SetActive(false);
-    }
+    public void openSettings(){
 
-    public void setCurrentUIOpen(GameObject obj){
-        UIOpen.Push(obj);
     }
 
     public bool IsPointerOverUIElement(){
@@ -82,5 +85,15 @@ public class PlayerController : MonoBehaviour
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raycastResults);
         return raycastResults;
+    }
+
+    public static void addToCloses(Action a){
+        closes.Push(a);
+    }
+
+
+    public void exitCurrentUIOpen(){
+        Action a = closes.Pop();
+        a();
     }
 }

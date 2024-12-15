@@ -10,6 +10,8 @@ public class UIPRManager : MonoBehaviour
     public GameObject plantSelectorSlotPrefab;
     public List<GameObject> rows;
 
+    public bool zoomed;
+
     public GameObject selectorContent;
 
     public UIInvManager invManager;

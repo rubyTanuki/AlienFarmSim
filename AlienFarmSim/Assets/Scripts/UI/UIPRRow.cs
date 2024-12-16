@@ -29,12 +29,12 @@ public class UIPRRow : MonoBehaviour
     public void singleSelectRow(){
         manager.clearSelected();
         foreach (UIPRSlot slot in slots){
-            slot.Select();
+            //slot.Select();
         }
     }
     public void compoundSelectRow(){
         foreach (UIPRSlot slot in slots){
-            slot.Select();
+            //slot.Select();
         }
     }
     public void compoundDeselectRow(){
@@ -42,7 +42,7 @@ public class UIPRRow : MonoBehaviour
     }
     public void singleDeselectRow(){
         foreach (UIPRSlot slot in slots){
-            slot.singleDeselect();
+            //slot.singleDeselect();
         }
     }
 

@@ -9,9 +9,10 @@ public class UIPRSlot : MonoBehaviour
     
     public GameObject hover;
     public GameObject selected;
-    public UIPRManager manager;
+    //public UIPRManager manager;
     public UIPRPlant plant;
     private HarvestUpdateManager updates;
+    private UIPRRowManager row;
 
     private Sprite empty;
 
@@ -23,6 +24,7 @@ public class UIPRSlot : MonoBehaviour
     {
         updates = GameObject.Find("UICanvas/HarvestUpdates").GetComponent<HarvestUpdateManager>();
         empty = plant.getImage();
+        row = transform.parent.gameObject.GetComponent<UIPRRowManager>();
     }
 
     // Update is called once per frame
@@ -34,17 +36,15 @@ public class UIPRSlot : MonoBehaviour
         if(hover.activeSelf){
             if(rightClick)
             {
-                if(selected.activeSelf) singleDeselect();
-                else Select();
+                select();
             }
             if(leftClick)
             {
-                if(selected.activeSelf) Deselect();
-                else singleSelect();
+
             }
         }
         lastLeftClick = leftClick;
-        hover.SetActive(isHovering);
+        hover.SetActive(isHovering && row.interactable());
         isHovering = false;
     }
 
@@ -53,28 +53,32 @@ public class UIPRSlot : MonoBehaviour
 
     public void setHover(bool b){ isHovering = b; }
 
-    public void Select(){
-        selected.SetActive(true);
-        manager.currentSelected.Add(this);
+    public void select(){
+        
     }
-    public void singleSelect(){
-        selected.SetActive(true);
-        if(manager.currentSelected != null && !manager.currentSelected.Contains(this))
-            manager.clearSelected();
-        manager.currentSelected.Add(this);
-    }
-    public void Deselect(){
-        selected.SetActive(false);
-        manager.clearSelected();
-    }
-    public void singleDeselect(){
-        selected.SetActive(false);
-        manager.currentSelected.Remove(this);
-    }
+
+    // public void Select(){
+    //     selected.SetActive(true);
+    //     manager.currentSelected.Add(this);
+    // }
+    // public void singleSelect(){
+    //     selected.SetActive(true);
+    //     if(manager.currentSelected != null && !manager.currentSelected.Contains(this))
+    //         manager.clearSelected();
+    //     manager.currentSelected.Add(this);
+    // }
+    // public void Deselect(){
+    //     selected.SetActive(false);
+    //     manager.clearSelected();
+    // }
+    // public void singleDeselect(){
+    //     selected.SetActive(false);
+    //     manager.currentSelected.Remove(this);
+    // }
 
     void OnEnable(){
         lastLeftClick = true;
-        singleDeselect();
+        //singleDeselect();
     }
 
     void OnDisable(){
@@ -95,7 +99,7 @@ public class UIPRSlot : MonoBehaviour
             }
             
             plant.plant = null;
-            manager.updateSelectors();
+            //manager.updateSelectors();
         }
         return h;
     }

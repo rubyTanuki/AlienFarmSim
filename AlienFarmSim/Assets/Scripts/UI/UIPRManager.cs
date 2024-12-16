@@ -16,6 +16,8 @@ public class UIPRManager : MonoBehaviour
 
     public UIInvManager invManager;
 
+    
+
     void OnEnable(){
         clearSelected();
         updateSelectors();
@@ -77,7 +79,7 @@ public class UIPRManager : MonoBehaviour
             inventory.subFromInventory(p, currentSelected.Count);
         }else{
             while(inventory.seedInventory[p]<currentSelected.Count){
-                currentSelected[0].singleDeselect();
+                //currentSelected[0].singleDeselect();
             }
             foreach (UIPRSlot slot in currentSelected){
                 slot.harvest();

@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour
                     if(rowManager.interactable()) activateInteractPrompt();
                     rowManager.setHover(true);
                     break;
+                case "PRUpgraderSelector":
+                    curRaycastResult.gameObject.GetComponent<UIPRUpgraderSelector>().setHover(true);
+                    break;
+                case "RowUpgradeMenuOption":
+                    curRaycastResult.gameObject.GetComponent<RowUpgradeMenuOption>().setHover(true);
+                    break;
             }
         }
         if(Input.GetKeyDown("escape")){

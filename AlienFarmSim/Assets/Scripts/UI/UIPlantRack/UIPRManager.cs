@@ -6,6 +6,7 @@ public class UIPRManager : MonoBehaviour
 {
     public List<UIPRSlot> currentSelected;
     public PlantSO selectedPlant;
+    public GameObject selectedRow;
     public GameObject plantSelector;
     public GameObject plantSelectorSlotPrefab;
     public List<GameObject> rows;
@@ -35,7 +36,7 @@ public class UIPRManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(!zoomed && selectedRow!=null) selectedRow = null;
         if(Input.GetKeyDown(KeyCode.H)){
             harvestSelected();
         }

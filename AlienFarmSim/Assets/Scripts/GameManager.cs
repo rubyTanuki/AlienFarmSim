@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private List<PlantSO> starterSeeds = new List<PlantSO>();
+    [SerializeField] private List<CropSO> starterCrops = new List<CropSO>();
     public Scene startScene;
     // Start is called before the first frame update
     void Awake()
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene("TestRoom", LoadSceneMode.Additive);
         foreach(PlantSO p in starterSeeds){
             inventory.seedInventory.Add(p, 6);
+        }
+        foreach(CropSO c in starterCrops){
+            inventory.cropInventory.Add(c, 10);
         }
     }
 

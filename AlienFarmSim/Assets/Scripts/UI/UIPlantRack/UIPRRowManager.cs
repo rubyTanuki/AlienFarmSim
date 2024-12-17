@@ -116,6 +116,7 @@ public class UIPRRowManager : MonoBehaviour
     }
 
     public void zoomIn(){
+        rackManager.selectedRow = this.gameObject;
         RectTransform upgradeRectTransform = upgradePanel.GetComponent<RectTransform>();
 
         upgradeRectTransform.transform.position = Vector2.Lerp(

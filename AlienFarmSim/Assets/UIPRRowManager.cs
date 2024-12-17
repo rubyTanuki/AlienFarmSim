@@ -118,9 +118,9 @@ public class UIPRRowManager : MonoBehaviour
     public void zoomIn(){
         RectTransform upgradeRectTransform = upgradePanel.GetComponent<RectTransform>();
 
-        upgradeRectTransform.anchoredPosition = Vector2.Lerp(
-            upgradeRectTransform.anchoredPosition,
-            new Vector2(0, -600), 
+        upgradeRectTransform.transform.position = Vector2.Lerp(
+            upgradeRectTransform.transform.position,
+            new Vector2(0, -19f), 
             Time.deltaTime*3
         );
         contentRectTransform.sizeDelta = Vector2.Lerp(
@@ -132,9 +132,9 @@ public class UIPRRowManager : MonoBehaviour
     }
     public void zoomOut(){
         RectTransform upgradeRectTransform = upgradePanel.GetComponent<RectTransform>();
-        upgradeRectTransform.anchoredPosition = Vector2.Lerp(
-            upgradeRectTransform.anchoredPosition,
-            new Vector2(0, 500), 
+        upgradeRectTransform.transform.position = Vector2.Lerp(
+            upgradeRectTransform.transform.position,
+            new Vector2(0, 7f), 
             Time.deltaTime*3
         );
         contentRectTransform.sizeDelta = Vector2.Lerp(

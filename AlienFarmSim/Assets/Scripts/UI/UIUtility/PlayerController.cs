@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
                 case "RowUpgradeMenuOption":
                     curRaycastResult.gameObject.GetComponent<RowUpgradeMenuOption>().setHover(true);
                     break;
+                case "SlotMenuOption":
+                    curRaycastResult.gameObject.GetComponent<SlotMenuOption>().setHover(true);
+                    break;
             }
         }
         if(Input.GetKeyDown("escape")){

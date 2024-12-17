@@ -12,6 +12,7 @@ TagManager:
   - PlantRackRow
   - PRUpgraderSelector
   - RowUpgradeMenuOption
+  - SlotMenuOption
   layers:
   - Default
   - TransparentFX

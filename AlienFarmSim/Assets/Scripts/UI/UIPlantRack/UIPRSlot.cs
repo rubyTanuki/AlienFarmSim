@@ -19,6 +19,15 @@ public class UIPRSlot : MonoBehaviour
     public bool isHovering = false;
 
     private bool lastLeftClick = false;
+
+    private float timer;
+    private bool allowedToClick;
+
+    void OnEnable(){
+        timer = Time.time;
+        lastLeftClick = true;
+        allowedToClick = false;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +39,13 @@ public class UIPRSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool leftClick = Input.GetMouseButtonDown(0);
+        bool leftClick = Input.GetMouseButton(0);
         bool rightClick = Input.GetMouseButtonDown(1);
+        if(!leftClick){
+            allowedToClick = true;
+        }
 
-        if(hover.activeSelf){
+        if(hover.activeSelf && Time.time-timer>.5f && allowedToClick){
             if(rightClick)
             {
                 
@@ -75,11 +87,6 @@ public class UIPRSlot : MonoBehaviour
     //     selected.SetActive(false);
     //     manager.currentSelected.Remove(this);
     // }
-
-    void OnEnable(){
-        lastLeftClick = true;
-        //singleDeselect();
-    }
 
     void OnDisable(){
         hover.SetActive(false);

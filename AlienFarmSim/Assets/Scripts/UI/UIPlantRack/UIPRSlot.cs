@@ -36,11 +36,11 @@ public class UIPRSlot : MonoBehaviour
         if(hover.activeSelf){
             if(rightClick)
             {
-                select();
+                
             }
             if(leftClick)
             {
-
+                harvest();
             }
         }
         lastLeftClick = leftClick;
@@ -102,6 +102,12 @@ public class UIPRSlot : MonoBehaviour
             //manager.updateSelectors();
         }
         return h;
+    }
+
+    public void plantSeed(PlantSO p){
+        harvest();
+        plant.plant = p;
+        plant.resetPlant();
     }
 
 }

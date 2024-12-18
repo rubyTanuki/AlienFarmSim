@@ -13,6 +13,7 @@ public class UIPRManager : MonoBehaviour
 
     public bool zoomed;
 
+
     public GameObject selectorContent;
 
     public UIInvManager invManager;
@@ -36,7 +37,7 @@ public class UIPRManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!zoomed && selectedRow!=null) selectedRow = null;
+        //if(!zoomed && selectedRow!=null) selectedRow = null;
         if(Input.GetKeyDown(KeyCode.H)){
             harvestSelected();
         }

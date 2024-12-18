@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class UIPRRowManager : MonoBehaviour
 {
-    private List<UIPRSlot> slots = new List<UIPRSlot>();
+    public List<UIPRSlot> slots = new List<UIPRSlot>();
 
     [SerializeField] private GameObject rowUpgrader;
 
@@ -38,7 +38,7 @@ public class UIPRRowManager : MonoBehaviour
 
     void Start(){
         StartCoroutine("WaitToInitZoomedPosition");
-        zoomedSizeDelta = new Vector2(1056, 592);
+        zoomedSizeDelta = new Vector2(792, 444);
         
 
         content = this.gameObject.transform.parent.gameObject;
@@ -60,12 +60,14 @@ public class UIPRRowManager : MonoBehaviour
         if(isHovering && Input.GetKeyDown(KeyCode.F) && buffer && !rackManager.zoomed){
             zoom = true;
             rackManager.zoomed = true;
+            rackManager.selectedRow = this.gameObject;
             PlayerController.addToCloses(unZoom);
         }
 
-        if(zoom) zoomIn();
-        else zoomOut();
-        
+        if(rackManager.selectedRow == this.gameObject){
+            if(zoom) zoomIn();
+            else zoomOut();
+        }
         isHovering = false;
     }
 
@@ -81,7 +83,8 @@ public class UIPRRowManager : MonoBehaviour
         for(int i=0;i<3;i++)
             yield return null;
         RectTransform rectTransform = this.gameObject.GetComponent<RectTransform>();
-        zoomedPosition = new Vector2(0, -400 -(185+rectTransform.anchoredPosition.y)*3.2f);
+        //Debug.Log(rectTransform.anchoredPosition.y);
+        zoomedPosition = new Vector2(0,  - 140 + (-185-rectTransform.anchoredPosition.y)*1.09f);
     }
 
     public bool interactable(){
@@ -119,31 +122,31 @@ public class UIPRRowManager : MonoBehaviour
         rackManager.selectedRow = this.gameObject;
         RectTransform upgradeRectTransform = upgradePanel.GetComponent<RectTransform>();
 
-        upgradeRectTransform.transform.position = Vector2.Lerp(
+        upgradeRectTransform.transform.position = Vector3.Lerp(
             upgradeRectTransform.transform.position,
-            new Vector2(0, -19f), 
-            Time.deltaTime*3
+            new Vector3(0, -1.8f, 0), 
+            Time.deltaTime*4
         );
         contentRectTransform.sizeDelta = Vector2.Lerp(
             contentRectTransform.sizeDelta,
-            zoomedSizeDelta, Time.deltaTime*1.75f);
+            zoomedSizeDelta, Time.deltaTime*2.2f);
         contentRectTransform.anchoredPosition = Vector2.Lerp(
             contentRectTransform.anchoredPosition, 
-            zoomedPosition, Time.deltaTime*3);
+            zoomedPosition, Time.deltaTime*3.5f);
     }
     public void zoomOut(){
         RectTransform upgradeRectTransform = upgradePanel.GetComponent<RectTransform>();
-        upgradeRectTransform.transform.position = Vector2.Lerp(
+        upgradeRectTransform.transform.position = Vector3.Lerp(
             upgradeRectTransform.transform.position,
-            new Vector2(0, 7f), 
-            Time.deltaTime*3
+            new Vector3(0, 7f, 0), 
+            Time.deltaTime*4
         );
         contentRectTransform.sizeDelta = Vector2.Lerp(
             contentRectTransform.sizeDelta,
-            baseSizeDelta, Time.deltaTime*1.75f);
+            baseSizeDelta, Time.deltaTime*2.2f);
         contentRectTransform.anchoredPosition = Vector2.Lerp(
             contentRectTransform.anchoredPosition, 
-            basePosition, Time.deltaTime*3);
+            basePosition, Time.deltaTime*3.5f);
     }
 }
 

@@ -16,6 +16,9 @@ public class UIPRRowManager : MonoBehaviour
 
     [SerializeField] private UIPRManager rackManager;
 
+    [SerializeField] private GameObject backgroundImgObj;
+    private Image backgroundImg;
+
     private bool isHovering;
 
     private bool zoom;
@@ -40,13 +43,15 @@ public class UIPRRowManager : MonoBehaviour
         StartCoroutine("WaitToInitZoomedPosition");
         zoomedSizeDelta = new Vector2(792, 444);
         
-
+        
         content = this.gameObject.transform.parent.gameObject;
         contentRectTransform = content.GetComponent<RectTransform>();
 
         foreach(Transform child in transform){
             slots.Add(child.gameObject.GetComponent<UIPRSlot>());
         }
+
+        backgroundImg = backgroundImgObj.GetComponent<Image>();
     }
 
     void OnEnable(){
@@ -112,6 +117,11 @@ public class UIPRRowManager : MonoBehaviour
 
     public void setEnvironment(RowEnvironmentSO env){
         environment = env;
+        updateImage();
+    }
+
+    public void updateImage(){
+        backgroundImg.sprite = environment.getBackground();
     }
 
     public RowEnvironmentSO getEnvironment(){

@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class RowEnvironmentSO : ScriptableObject
 {
     [SerializeField] private string name;
+    [SerializeField] private string description;
     [SerializeField] private int price;
     [SerializeField] private Sprite background;
-    [SerializeField] private Image icon;
+    [SerializeField] private Sprite icon;
 
 
     public string getName(){return name;}
+    public string getDescription(){return description;}
     public int getPrice(){return price;}
     public Sprite getBackground(){return background;}
-    public Image getIcon(){return icon;}
+    public Sprite getIcon(){return icon;}
 }

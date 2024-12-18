@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<PlantSO> starterSeeds = new List<PlantSO>();
     [SerializeField] private List<CropSO> starterCrops = new List<CropSO>();
+    [SerializeField] private List<RowEnvironmentSO> starterEnvs = new List<RowEnvironmentSO>();
     public Scene startScene;
     // Start is called before the first frame update
     void Awake()
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
         }
         foreach(CropSO c in starterCrops){
             inventory.cropInventory.Add(c, 10);
+        }
+        foreach(RowEnvironmentSO env in starterEnvs){
+            inventory.addFabricatorModule(env);
         }
     }
 

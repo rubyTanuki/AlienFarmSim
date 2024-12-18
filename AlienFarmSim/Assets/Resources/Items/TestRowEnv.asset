@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: TestRowEnv
   m_EditorClassIdentifier: 
   name: Test Environment
+  description: this is a test environment. it has a blank background with basic stats.
   price: 5
   background: {fileID: 21300000, guid: e71c970f63f7f4944bd6f27d2dba5e36, type: 3}
+  icon: {fileID: 21300000, guid: e71c970f63f7f4944bd6f27d2dba5e36, type: 3}

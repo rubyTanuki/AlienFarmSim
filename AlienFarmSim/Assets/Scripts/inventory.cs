@@ -15,6 +15,8 @@ public static class inventory
     public static Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
     public static Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
 
+    public static List<RowEnvironmentSO> environmentModules = new List<RowEnvironmentSO>();
+
     public static List<PlantSO> starterSeeds = new List<PlantSO>();
 
     public static HarvestUpdateManager updateManager;
@@ -159,4 +161,11 @@ public static class inventory
         }
     }
 
+
+
+
+
+    public static void addFabricatorModule(RowEnvironmentSO env){
+        environmentModules.Add(env);
+    }
 }

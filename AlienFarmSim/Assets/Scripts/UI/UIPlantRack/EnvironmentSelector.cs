@@ -49,6 +49,6 @@ public class EnvironmentSelector : MonoBehaviour
         string text = "" + environment.getPrice();
         while(text.Length<5) text = "0" + text;
         priceText.SetText(text);
-        img = environment.getIcon();
+        img.sprite  = environment.getIcon();
     }
 }

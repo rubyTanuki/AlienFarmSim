@@ -20,6 +20,8 @@ public class UIGeneralMarket : UIMarket
     void Awake(){
         PlantSO p = Resources.Load<PlantSO>("Items/testPlant2");
         buyableItems.Add(p, 10);
+        FabricatorModuleSO r = Resources.Load<FabricatorModuleSO>("Items/FabricatorMod02");
+        buyableItems.Add(r, 1);
     }
     
 
@@ -92,6 +94,8 @@ public class UIGeneralMarket : UIMarket
                 inventory.addToInventory(p, amountToBuy);
             }else if(item is CropSO c){
                 inventory.addToInventory(c, amountToBuy);
+            }else if(item is FabricatorModuleSO f){
+                inventory.addFabricatorModule(f);
             }else{
                 inventory.addToInventory(item, amountToBuy);
             }

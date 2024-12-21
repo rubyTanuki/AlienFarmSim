@@ -58,7 +58,15 @@ public class EnvMenuManager : MonoBehaviour
     }
 
     public void applyEnvironment(RowEnvironmentSO env){
-        rackManager.selectedRow.GetComponent<UIPRRowManager>().setEnvironment(env);
+        UIPRRowManager rowManager = rackManager.selectedRow.GetComponent<UIPRRowManager>();
+
+        if(inventory.getMoney()>env.getPrice() && rowManager.getEnvironment() != env){
+            rowManager.setEnvironment(env);
+            inventory.subMoney(env.getPrice());
+            Debug.Log("Taking " + env.getPrice() + " dollars");
+        }
+        
+        
     }
 
 }

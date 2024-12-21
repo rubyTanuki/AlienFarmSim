@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 798d0505bad76e241b75225009427804, type: 3}
-  m_Name: TestRowEnv
+  m_Name: TestRowEnv 02
   m_EditorClassIdentifier: 
-  name: Test Environment
+  name: Test Environment 02
   description: this is a test environment. it has a blank background with basic stats.
-  price: 5
-  background: {fileID: 21300000, guid: e71c970f63f7f4944bd6f27d2dba5e36, type: 3}
-  icon: {fileID: 21300000, guid: e71c970f63f7f4944bd6f27d2dba5e36, type: 3}
+  price: 125
+  background: {fileID: 21300000, guid: 72127ebe2e8c948e982f78d498e90444, type: 3}
+  icon: {fileID: 21300000, guid: 72127ebe2e8c948e982f78d498e90444, type: 3}

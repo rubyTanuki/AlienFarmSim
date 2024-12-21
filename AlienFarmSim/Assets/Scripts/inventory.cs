@@ -168,4 +168,7 @@ public static class inventory
     public static void addFabricatorModule(RowEnvironmentSO env){
         environmentModules.Add(env);
     }
+    public static void addFabricatorModule(FabricatorModuleSO fabMod){
+        environmentModules.Add(fabMod.environment);
+    }
 }

@@ -16,7 +16,6 @@ public class UIPRRowManager : MonoBehaviour
 
     [SerializeField] private UIPRManager rackManager;
 
-    [SerializeField] private GameObject backgroundImgObj;
     private Image backgroundImg;
 
     private bool isHovering;
@@ -51,7 +50,7 @@ public class UIPRRowManager : MonoBehaviour
             slots.Add(child.gameObject.GetComponent<UIPRSlot>());
         }
 
-        backgroundImg = backgroundImgObj.GetComponent<Image>();
+        backgroundImg = GetComponent<Image>();
     }
 
     void OnEnable(){

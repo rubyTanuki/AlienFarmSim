@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 mouseWorld;
     private static Stack<Action> closes = new Stack<Action>();
     public GameObject currentUIOpen;
+    public GameObject overlay;
     int UILayer;
 
     private bool hoveringOverInteractable;
@@ -79,6 +80,9 @@ public class PlayerController : MonoBehaviour
         if(!hoveringOverInteractable && lastHoveringOverInteractable){
             interactPrompt.GetComponent<FollowMouse>().fadeOut();
         }
+
+        if(closes.Count==0) overlay.SetActive(true);
+        else overlay.SetActive(false);
 
         
         lastHoveringOverInteractable = hoveringOverInteractable;

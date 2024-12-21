@@ -16,6 +16,7 @@ public static class inventory
     public static Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
 
     public static List<RowEnvironmentSO> environmentModules = new List<RowEnvironmentSO>();
+    public static List<RowLightingSO> lightingModules = new List<RowLightingSO>();
 
     public static List<PlantSO> starterSeeds = new List<PlantSO>();
 
@@ -165,10 +166,19 @@ public static class inventory
 
 
 
+    
+    public static void addFabricatorModule(FabricatorModuleSO fabMod){
+        RowUpgradeSO upgrade = fabMod.upgrade;
+        if(upgrade is RowEnvironmentSO environment){
+            environmentModules.Add(environment);
+        }else if(upgrade is RowLightingSO light){
+            lightingModules.Add(light);
+        }
+    }
     public static void addFabricatorModule(RowEnvironmentSO env){
         environmentModules.Add(env);
     }
-    public static void addFabricatorModule(FabricatorModuleSO fabMod){
-        environmentModules.Add(fabMod.environment);
+    public static void addFabricatorModule(RowLightingSO light){
+        lightingModules.Add(light);
     }
 }

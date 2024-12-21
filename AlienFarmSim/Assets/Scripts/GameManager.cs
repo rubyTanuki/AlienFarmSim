@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static readonly float ITEM_BUY_MULTIPLIER = 2.5f;
 
-
+    public static Stack<Action> closes = new Stack<Action>();
 
 
     [SerializeField] private List<PlantSO> starterSeeds = new List<PlantSO>();
@@ -32,6 +33,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown("escape")){
+            if(closes.Count!=0){
+                exitCurrentUIOpen();
+            }else{
+                openSettings();
+            }
+        }
+    }
+
+    public static void addToCloses(Action a){
+        closes.Push(a);
+    }
+
+
+    public void exitCurrentUIOpen(){
+        Action a = closes.Pop();
+        a();
+    }
+
+    public void openSettings(){
 
     }
 }

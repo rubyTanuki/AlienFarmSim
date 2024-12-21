@@ -65,7 +65,7 @@ public class UIPRRowManager : MonoBehaviour
             zoom = true;
             rackManager.zoomed = true;
             rackManager.selectedRow = this.gameObject;
-            PlayerController.addToCloses(unZoom);
+            GameManager.addToCloses(unZoom);
         }
 
         if(rackManager.selectedRow == this.gameObject){

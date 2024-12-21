@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     private Vector2 mousePos;
     private Vector2 mouseWorld;
-    private static Stack<Action> closes = new Stack<Action>();
-    public GameObject currentUIOpen;
     public GameObject overlay;
     int UILayer;
 
@@ -17,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool lastHoveringOverInteractable;
     private bool interactPromptActive;
     [SerializeField] private GameObject interactPrompt;
+    [SerializeField] private BlastDoorScript doorScript;
 
     float closeBufferTime;
 
@@ -70,23 +69,20 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
-        if(Input.GetKeyDown("escape")){
-            if(closes.Count!=0){
-                exitCurrentUIOpen();
-            }else{
-                openSettings();
-            }
-        }
         if(!hoveringOverInteractable && lastHoveringOverInteractable){
             interactPrompt.GetComponent<FollowMouse>().fadeOut();
         }
 
-        if(closes.Count==0) overlay.SetActive(true);
-        else overlay.SetActive(false);
-
+        // if(GameManager.closes.Count>1){
+        //     doorScript.forceOpen();
+        // }
         
         lastHoveringOverInteractable = hoveringOverInteractable;
         hoveringOverInteractable = false;
+    }
+
+    public bool canOpenUI(){
+        return !IsPointerOverUIElement() && BlastDoorScript.isOpen;
     }
 
     public void activateInteractPrompt(){
@@ -95,11 +91,6 @@ public class PlayerController : MonoBehaviour
         interactPrompt.SetActive(true);
         interactPrompt.GetComponent<FollowMouse>().fadeIn();
     }
-
-    public void openSettings(){
-
-    }
-
     public bool IsPointerOverUIElement(){
         return IsPointerOverUIElement(GetEventSystemRaycastResults());
     }
@@ -120,13 +111,5 @@ public class PlayerController : MonoBehaviour
         return raycastResults;
     }
 
-    public static void addToCloses(Action a){
-        closes.Push(a);
-    }
-
-
-    public void exitCurrentUIOpen(){
-        Action a = closes.Pop();
-        a();
-    }
+    
 }

@@ -6,6 +6,6 @@ using UnityEngine;
 public class FabricatorModuleSO : ItemSO
 {
 
-    public RowEnvironmentSO environment;
+    public RowUpgradeSO upgrade;
 
 }

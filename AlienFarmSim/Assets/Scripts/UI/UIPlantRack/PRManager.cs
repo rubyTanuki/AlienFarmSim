@@ -23,14 +23,16 @@ public class PRManager : MonoBehaviour
     }
 
     void OnMouseOver(){
-        hovering = true;
-        if(Input.GetMouseButtonDown(0) && !pc.IsPointerOverUIElement()){
-            Open();
+        if(pc.canOpenUI()){
+            hovering = true;
+            if(Input.GetMouseButtonDown(0)){
+                Open();
+            }
         }
     }
 
     public void Open(){
         rack.SetActive(true);
-        PlayerController.addToCloses(()=> rack.SetActive(false));
+        GameManager.addToCloses(()=> rack.SetActive(false));
     }
 }

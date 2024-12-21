@@ -22,14 +22,16 @@ public class MarketManager : MonoBehaviour
     }
 
     void OnMouseOver(){
-        hovering = true;
-        if(Input.GetMouseButtonDown(0) && !pc.IsPointerOverUIElement()){
-            Open();
+        if(pc.canOpenUI()){
+            hovering = true;
+            if(Input.GetMouseButtonDown(0)){
+                Open();
+            }
         }
     }
     public void Open(){
         market.SetActive(true);
-        PlayerController.addToCloses(()=>market.SetActive(false));
+        GameManager.addToCloses(()=>market.SetActive(false));
         //pc.setCurrentUIOpen(market);
     }
     public void Close(){

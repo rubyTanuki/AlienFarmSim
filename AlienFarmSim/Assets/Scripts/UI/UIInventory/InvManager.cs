@@ -20,25 +20,22 @@ public class InvManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab)){
-            if(pc.currentUIOpen == null){
-                Open();
-            }
-        }
         selector.SetActive(hovering);
         hovering = false;
     }
 
     void OnMouseOver(){
-        hovering = true;
-        if(Input.GetMouseButtonDown(0) && !pc.IsPointerOverUIElement()){
-            Open();
+        if(pc.canOpenUI()){
+            hovering = true;
+            if(Input.GetMouseButtonDown(0)){
+                Open();
+            }
         }
     }
 
     public void Open(){
         inventoryUI.SetActive(true);
-        PlayerController.addToCloses(()=>inventoryUI.SetActive(false));
+        GameManager.addToCloses(()=>inventoryUI.SetActive(false));
         //pc.setCurrentUIOpen(inventoryUI);
     }
     public void Close(){

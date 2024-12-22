@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
                 case "SlotMenuOption":
                     curRaycastResult.gameObject.GetComponent<SlotMenuOption>().setHover(true);
                     break;
+                case "NavigatorPlanet":
+                    curRaycastResult.gameObject.GetComponent<UIPlanetManager>().IsOver();
+                    break;
             }
         }
         if(!hoveringOverInteractable && lastHoveringOverInteractable){

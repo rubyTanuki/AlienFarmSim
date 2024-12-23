@@ -18,9 +18,9 @@ public class UIGeneralMarket : UIMarket
 
 
     void Awake(){
-        PlantSO p = Resources.Load<PlantSO>("Items/testPlant2");
+        PlantSO p = Resources.Load<PlantSO>("Items/Plants/testPlant2");
         buyableItems.Add(p, 10);
-        FabricatorModuleSO r = Resources.Load<FabricatorModuleSO>("Items/FabricatorMod02");
+        FabricatorModuleSO r = Resources.Load<FabricatorModuleSO>("Items/FabMods/FabricatorMod02");
         buyableItems.Add(r, 1);
     }
     

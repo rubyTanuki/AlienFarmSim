@@ -8,6 +8,8 @@ public class UIPlanetManager : MonoBehaviour
     public NavigatorManager navManager;
     public Image planetImage;
 
+    public PlanetSO planet;
+
     public GameObject hover;
     private bool hovering;
 
@@ -66,14 +68,14 @@ public class UIPlanetManager : MonoBehaviour
         opacity = Mathf.Min(opacity+5f*Time.deltaTime, 1);
         color = new Color(color.r, color.g, color.b, opacity);
         hover.GetComponent<Image>().color = color;
-        Debug.Log(hover.GetComponent<Image>().color.a);
+        //Debug.Log(hover.GetComponent<Image>().color.a);
     }
     public void fadeOut(){
         
         opacity = Mathf.Max(opacity-5f*Time.deltaTime, 0);
         color = new Color(color.r, color.g, color.b, opacity);
         hover.GetComponent<Image>().color = color;
-        Debug.Log(hover.GetComponent<Image>().color.a);
+        //Debug.Log(hover.GetComponent<Image>().color.a);
     }
 
 

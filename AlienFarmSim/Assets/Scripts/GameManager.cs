@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static Stack<Action> closes = new Stack<Action>();
 
+    public static PlanetSO currentPlanet;
+
 
     [SerializeField] private List<PlantSO> starterSeeds = new List<PlantSO>();
     [SerializeField] private List<CropSO> starterCrops = new List<CropSO>();
@@ -49,10 +51,15 @@ public class GameManager : MonoBehaviour
 
     public void exitCurrentUIOpen(){
         Action a = closes.Pop();
+        //Debug.Log(a.Method.Name);
         a();
     }
 
     public void openSettings(){
 
+    }
+
+    public static void setCurrentPlanet(PlanetSO p){
+        currentPlanet = p;
     }
 }

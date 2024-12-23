@@ -70,6 +70,9 @@ public class PlayerController : MonoBehaviour
                 case "NavigatorPlanet":
                     curRaycastResult.gameObject.GetComponent<UIPlanetManager>().IsOver();
                     break;
+                case "Lever":
+                    curRaycastResult.gameObject.GetComponent<Lever>().isHovering();
+                    break;
             }
         }
         if(!hoveringOverInteractable && lastHoveringOverInteractable){

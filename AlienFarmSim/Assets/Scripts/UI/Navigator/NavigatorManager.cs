@@ -9,6 +9,9 @@ public class NavigatorManager : MonoBehaviour
     public GameObject planetSelectPanel;
     public GameObject planets;
 
+
+    public PlanetSO targetPlanet;
+
     private Camera mainCamera;
 
     private readonly float ZOOMED_SIZE = .6f;
@@ -25,7 +28,7 @@ public class NavigatorManager : MonoBehaviour
         mainCamera = Camera.main;
         startScale = planets.transform.localScale.x;
         
-        if(gameObject.activeSelf){
+        if(gameObject.activeSelf && selectedPlanet != null){
             StartCoroutine(waitToInit(Close, 2));
         }
     }
@@ -105,5 +108,10 @@ public class NavigatorManager : MonoBehaviour
     public void setSelectedPlanet(UIPlanetManager p){
         selectedPlanet = p;
         GameManager.addToCloses(Close);
+    }
+
+    public void setTarget(){
+        targetPlanet = selectedPlanet.planet;
+        Debug.Log("SETTING TARGET TO " + targetPlanet.name);
     }
 }

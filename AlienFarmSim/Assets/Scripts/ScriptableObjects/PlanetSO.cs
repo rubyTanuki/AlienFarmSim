@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New PlanetSO", menuName = "PlanetSO")]
 public class PlanetSO : ScriptableObject
 {
-    [SerializeField] private string name;
+    //[SerializeField] private string name;
     public string Name {get;}
 
     [SerializeField] private string description;

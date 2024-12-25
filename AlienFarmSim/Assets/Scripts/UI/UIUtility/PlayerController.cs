@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     private bool hoveringOverInteractable;
     private bool lastHoveringOverInteractable;
-    private bool interactPromptActive;
     [SerializeField] private GameObject interactPrompt;
     [SerializeField] private BlastDoorScript doorScript;
 
@@ -73,6 +72,12 @@ public class PlayerController : MonoBehaviour
                 case "Lever":
                     curRaycastResult.gameObject.GetComponent<Lever>().isHovering();
                     break;
+                case "BlastDoor":
+                    curRaycastResult.gameObject.GetComponent<DoorScript>().isHovering();
+                    // BlastDoorScript door = curRaycastResult.gameObject.GetComponent<BlastDoorScript>();
+                    // if(door.isClosed) activateInteractPrompt();
+                    // door.hovering = true;
+                    break;
             }
         }
         if(!hoveringOverInteractable && lastHoveringOverInteractable){
@@ -88,12 +93,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool canOpenUI(){
-        return !IsPointerOverUIElement() && BlastDoorScript.isOpen;
+        return !IsPointerOverUIElement();
     }
 
     public void activateInteractPrompt(){
         hoveringOverInteractable = true;
-        interactPromptActive = true;
         interactPrompt.SetActive(true);
         interactPrompt.GetComponent<FollowMouse>().fadeIn();
     }

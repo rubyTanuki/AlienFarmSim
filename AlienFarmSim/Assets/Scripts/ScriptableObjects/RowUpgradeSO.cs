@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Row Upgrade", menuName = "RowUpgradeSO")]
-public class RowUpgradeSO : MonoBehaviour
+public class RowUpgradeSO : ScriptableObject
 {
-    [SerializeField] protected string name;
+    //[SerializeField] protected string name;
     [SerializeField] protected string description;
     [SerializeField] protected int price;
     [SerializeField] protected Sprite icon;

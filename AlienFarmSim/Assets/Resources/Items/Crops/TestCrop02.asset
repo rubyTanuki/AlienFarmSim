@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1562e20583744c1b90263f0ec610e7, type: 3}
   m_Name: TestCrop02
   m_EditorClassIdentifier: 
-  name: Test Crop 02
+  _name: 
   description: this is a test crop. it's standard value is 12 coins
   image: {fileID: 21300000, guid: cd61ce38d2a4443db87925663a8e9d06, type: 3}
   baseValue: 22

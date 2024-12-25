@@ -21,6 +21,8 @@ public class NavigatorManager : MonoBehaviour
     private readonly float SCROLL_SPEED = 10;
     private float startScale;
 
+    private Vector3 startPosition;
+
     private Vector3 selectPanelOut = new Vector3(-350, 0, 0);
     private Vector3 selectPanelIn = new Vector3(25, 0, 0);
 
@@ -34,14 +36,13 @@ public class NavigatorManager : MonoBehaviour
     }
 
     void OnEnable(){
+        startPosition = this.gameObject.transform.position;
         Vector2 scaleVector = new Vector2(startScale, startScale);
         planets.transform.localScale = scaleVector;
-
-        StartCoroutine(waitToInit(()=>this.gameObject.SetActive(false), 1));
     }
     void OnDisable(){
         if(Camera.main != null){
-            Camera.main.transform.position = new Vector3(0,0,-10);
+            Camera.main.transform.position = startPosition;
             Camera.main.orthographicSize = 6;
         }
         if(planetSelectPanel!=null) planetSelectPanel.SetActive(false);
@@ -70,6 +71,8 @@ public class NavigatorManager : MonoBehaviour
         }else{
             zoomOut();
         }
+        
+        
 
         
     }
@@ -84,6 +87,7 @@ public class NavigatorManager : MonoBehaviour
         Vector3 planetPos = selectedPlanet.gameObject.transform.position;
         Vector3 targetPos = new Vector3(planetPos.x - .45f, planetPos.y, -10);
         mainCamera.transform.position = Vector3.Lerp(camPos, targetPos, 10*Time.deltaTime);
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, -10);
         
         float currentSize = mainCamera.orthographicSize;
         mainCamera.orthographicSize = Mathf.Lerp(currentSize, ZOOMED_SIZE, ZOOM_SPEED*Time.deltaTime);
@@ -93,16 +97,19 @@ public class NavigatorManager : MonoBehaviour
         selectPanelTransform.anchoredPosition = Vector3.Lerp(anchoredPos, selectPanelIn, 6*Time.deltaTime);
     }
     public void zoomOut(){
-        Vector3 camPos = mainCamera.transform.position;
-        Vector3 targetPos = new Vector3(0,0,-10);
-        mainCamera.transform.position = Vector3.Lerp(camPos, targetPos, 10*Time.deltaTime);
-        
-        float currentSize = mainCamera.orthographicSize;
-        mainCamera.orthographicSize = Mathf.Lerp(currentSize, BASE_SIZE, ZOOM_SPEED*Time.deltaTime);
+        if(GameManager.closes.Count !=0){
+            Vector3 camPos = mainCamera.transform.position;
+            Vector3 targetPos = startPosition;
+            mainCamera.transform.position = Vector3.Lerp(camPos, targetPos, 10*Time.deltaTime);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, -10);
+            
+            float currentSize = mainCamera.orthographicSize;
+            mainCamera.orthographicSize = Mathf.Lerp(currentSize, BASE_SIZE, ZOOM_SPEED*Time.deltaTime);
 
-        RectTransform selectPanelTransform = planetSelectPanel.GetComponent<RectTransform>();
-        Vector3 anchoredPos = selectPanelTransform.anchoredPosition;
-        selectPanelTransform.anchoredPosition = Vector3.Lerp(anchoredPos, selectPanelOut, 6*Time.deltaTime);
+            RectTransform selectPanelTransform = planetSelectPanel.GetComponent<RectTransform>();
+            Vector3 anchoredPos = selectPanelTransform.anchoredPosition;
+            selectPanelTransform.anchoredPosition = Vector3.Lerp(anchoredPos, selectPanelOut, 6*Time.deltaTime);
+        }
     }
 
     public void setSelectedPlanet(UIPlanetManager p){

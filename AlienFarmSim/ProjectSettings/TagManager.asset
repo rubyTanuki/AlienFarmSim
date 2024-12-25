@@ -15,6 +15,7 @@ TagManager:
   - SlotMenuOption
   - NavigatorPlanet
   - Lever
+  - BlastDoor
   layers:
   - Default
   - TransparentFX

@@ -87,8 +87,8 @@ public class UIPRRowManager : MonoBehaviour
         for(int i=0;i<3;i++)
             yield return null;
         RectTransform rectTransform = this.gameObject.GetComponent<RectTransform>();
-        //Debug.Log(rectTransform.anchoredPosition.y);
-        zoomedPosition = new Vector2(0,  - 140 + (-185-rectTransform.anchoredPosition.y)*1.09f);
+        Debug.Log(rectTransform.anchoredPosition.y);
+        zoomedPosition = new Vector2(0,  - 104 + (-160-rectTransform.anchoredPosition.y)*.895f); //*1.09f
     }
 
     public bool interactable(){
@@ -136,9 +136,9 @@ public class UIPRRowManager : MonoBehaviour
             new Vector3(0, -1.8f, 0), 
             Time.deltaTime*4
         );
-        contentRectTransform.sizeDelta = Vector2.Lerp(
-            contentRectTransform.sizeDelta,
-            zoomedSizeDelta, Time.deltaTime*2.2f);
+        // contentRectTransform.sizeDelta = Vector2.Lerp(
+        //     contentRectTransform.sizeDelta,
+        //     zoomedSizeDelta, Time.deltaTime*2.2f);
         contentRectTransform.anchoredPosition = Vector2.Lerp(
             contentRectTransform.anchoredPosition, 
             zoomedPosition, Time.deltaTime*3.5f);
@@ -150,9 +150,9 @@ public class UIPRRowManager : MonoBehaviour
             new Vector3(0, 7f, 0), 
             Time.deltaTime*4
         );
-        contentRectTransform.sizeDelta = Vector2.Lerp(
-            contentRectTransform.sizeDelta,
-            baseSizeDelta, Time.deltaTime*2.2f);
+        // contentRectTransform.sizeDelta = Vector2.Lerp(
+        //     contentRectTransform.sizeDelta,
+        //     baseSizeDelta, Time.deltaTime*2.2f);
         contentRectTransform.anchoredPosition = Vector2.Lerp(
             contentRectTransform.anchoredPosition, 
             basePosition, Time.deltaTime*3.5f);

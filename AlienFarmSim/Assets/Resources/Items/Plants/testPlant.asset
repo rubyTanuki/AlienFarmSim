@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ce44622c85f48b69b5c9cec0c71e26, type: 3}
   m_Name: testPlant
   m_EditorClassIdentifier: 
-  name: Test Plant 01 test test test
+  _name: 
   description: this is a test plant. it grows in 5 seconds
-  image: {fileID: -14139997, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
+  image: {fileID: 1799693468, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
   baseValue: 6
-  growthTime: 5
+  growthTime: 3
   sprites:
-  - {fileID: -1709811326, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
-  - {fileID: -524574725, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
-  - {fileID: -953142104, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
-  - {fileID: 2032954918, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
-  - {fileID: -14139997, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
-  - {fileID: 982920617, guid: fb6d1f27b56644968b5b336edbc5a135, type: 3}
+  - {fileID: 1479648219, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
+  - {fileID: 572086362, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
+  - {fileID: -1341584713, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
+  - {fileID: 1953071121, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
+  - {fileID: 1799693468, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
+  - {fileID: -1680617758, guid: c38a07ec32a146e49ab1a5e5150b7242, type: 3}
   crop: {fileID: 11400000, guid: baa6e9b6ce6524e278811e0e5484a9b3, type: 2}
   baseYield: 3

@@ -95,7 +95,7 @@ public class UIPRSlot : MonoBehaviour
     public PlantSO harvest(){
         PlantSO h = plant.plant;
         if(h != null){
-            if(plant.growthStage == 4){
+            if(plant.growthStage == 5){
                 inventory.addToInventory(h.crop, h.baseYield);
                 //updates.addUpdate(h.crop, h.baseYield);
                 inventory.addToInventory(h, 2);

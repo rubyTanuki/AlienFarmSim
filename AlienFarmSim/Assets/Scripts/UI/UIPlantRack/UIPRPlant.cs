@@ -11,6 +11,8 @@ public class UIPRPlant : MonoBehaviour
     public PlantSO plant;
     public int growthStage = 0;
 
+    private float growthRate;
+
     public enum Stages
     {
         Seedling,
@@ -44,7 +46,9 @@ public class UIPRPlant : MonoBehaviour
             activeSprite = plant.sprites[growthStage];
             Image img = GetComponent<Image>();
             img.sprite = activeSprite;
-            increaseTimer();
+            resetTimer();
+            growthRate *= Random.Range(0.9f, 1.1f);
+            growthRate = Mathf.Clamp(growthRate, (float)plant.growthTime*.75f, (float)plant.growthTime*1.25f);
         }
     }
 
@@ -62,6 +66,7 @@ public class UIPRPlant : MonoBehaviour
 
     public void resetPlant(){
         growthStage = 0;
+        growthRate = (float)plant.growthTime * Random.Range(0.8f, 1.2f);
         resetTimer();
         Image img = GetComponent<Image>();
         if(plant != null){
@@ -74,6 +79,6 @@ public class UIPRPlant : MonoBehaviour
     }
 
     private bool shouldGrow(){
-        return Time.time-timer>plant.growthTime && growthStage != plant.sprites.Length-1;
+        return Time.time-timer>growthRate && growthStage != plant.sprites.Length-1;
     }
 }

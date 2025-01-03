@@ -13,7 +13,8 @@ public class UIPRManager : MonoBehaviour
 
     public bool zoomed;
 
-
+    // public GameObject leftArrow;
+    // public GameObject rightArrow;
     public GameObject selectorContent;
 
     public UIInvManager invManager;
@@ -38,6 +39,14 @@ public class UIPRManager : MonoBehaviour
     void Update()
     {
         //if(!zoomed && selectedRow!=null) selectedRow = null;
+        // if(zoomed){
+        //     leftArrow.SetActive(true);
+        //     rightArrow.SetActive(true);
+        // }else{
+        //     leftArrow.SetActive(false);
+        //     rightArrow.SetActive(false);
+        // }
+
         if(Input.GetKeyDown(KeyCode.H)){
             harvestSelected();
         }
@@ -106,5 +115,19 @@ public class UIPRManager : MonoBehaviour
             row.GetComponent<UIPRRow>().harvestAll();
         }
         clearSelected();
+    }
+
+
+    public void increaseSelectedRow(){
+        int index = rows.IndexOf(selectedRow);
+        index++;
+        if(index>=rows.Count)index = 0;
+        selectedRow = rows[index];
+    }
+    public void decreaseSelectedRow(){
+        int index = rows.IndexOf(selectedRow);
+        index--;
+        if(index<=0) index = rows.Count-1;
+        selectedRow = rows[index];
     }
 }

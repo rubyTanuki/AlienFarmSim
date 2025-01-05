@@ -6,6 +6,13 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
+    int UILayer;
+
+    void Start()
+    {
+        UILayer = LayerMask.NameToLayer("UI");
+    }
+
     void Update(){
 
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -18,17 +25,19 @@ public class InputManager : MonoBehaviour
             RaycastResult curRaycastResult = eventSystem_Results[i];
             switch(curRaycastResult.gameObject.tag){
                 case "Interactable":
-                    curRaycastResult.gameObject.GetComponent<Interactable>().SetHover(true);
+                    curRaycastResult.gameObject.GetComponent<UIInteractable>().SetHover(true);
                     break;
             }
         }
         
-        RaycastHit2D[] physics2D_results = GetPhysics2DRaycastResults();
-        foreach(RaycastHit2D hit in physics2D_results){
-            switch(hit.transform.gameObject.tag){
-                case "Interactable":
-                    hit.transform.gameObject.GetComponent<Interactable>().SetHover(true);
-                break;
+        if(!IsPointerOverUIElement()){
+            RaycastHit2D[] physics2D_results = GetPhysics2DRaycastResults();
+            foreach(RaycastHit2D hit in physics2D_results){
+                switch(hit.transform.gameObject.tag){
+                    case "Interactable":
+                        hit.transform.gameObject.GetComponent<Interactable>().SetHover(true);
+                        break;
+                }
             }
         }
     }
@@ -44,5 +53,17 @@ public class InputManager : MonoBehaviour
     static RaycastHit2D[] GetPhysics2DRaycastResults(){
         RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), new Vector2(0,0), 1f);
         return hits;
+    }
+
+    public bool IsPointerOverUIElement(){
+        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+    }
+    public bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaycastResults){
+        for(int index = 0; index < eventSystemRaycastResults.Count; index++){
+            RaycastResult curRaycastResult = eventSystemRaycastResults[index];
+            if(curRaycastResult.gameObject.layer == UILayer)
+            return true;
+        }
+        return false;
     }
 }

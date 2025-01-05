@@ -8,20 +8,24 @@ public class Interactable : MonoBehaviour
     [SerializeField] private GameObject hover;
     private bool hovering;
 
-    [SerializeField] private float fadeSpeed = 10;
+    //[SerializeField] private float fadeSpeed = 10;
 
-    private util_AnimationHelper.FadeType fadeType = util_AnimationHelper.FadeType.Fade;
+    //private util_AnimationHelper.FadeType fadeType = util_AnimationHelper.FadeType.Fade;
 
 
-    [SerializeField] private UnityEvent OnClick;
+    [SerializeField] private UnityEvent OnLeftClick;
+    [SerializeField] private UnityEvent OnRightClick;
 
     void Awake(){
-        if(OnClick == null) OnClick = new UnityEvent();
+        if(OnLeftClick == null) OnLeftClick = new UnityEvent();
+        if(OnRightClick == null) OnRightClick = new UnityEvent();
     }
 
     void Update(){
         if(hovering && Input.GetMouseButtonDown(0)){
-            OnClick.Invoke();
+            OnLeftClick.Invoke();
+        }else if(hovering && Input.GetMouseButtonDown(1)){
+            OnRightClick.Invoke();
         }
 
 

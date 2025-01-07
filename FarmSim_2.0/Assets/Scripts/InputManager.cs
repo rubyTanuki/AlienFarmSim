@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 public class InputManager : MonoBehaviour
 {
     int UILayer;
+    
+    Vector2 currentMousePos;
+    Vector2 lastMousePos;
+    public static Vector2 mouseVelocity;
 
     void Start()
     {
@@ -14,6 +18,9 @@ public class InputManager : MonoBehaviour
     }
 
     void Update(){
+
+        currentMousePos=Input.mousePosition;
+        mouseVelocity = currentMousePos-lastMousePos;
 
         if(Input.GetKeyDown(KeyCode.Escape)){
             PageManager.ClosePage();
@@ -40,6 +47,8 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
+
+        lastMousePos = currentMousePos;
     }
 
     static List<RaycastResult> GetEventSystemRaycastResults(){

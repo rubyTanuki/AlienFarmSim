@@ -7,13 +7,16 @@ public class UIInteractable : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnLeftClick;
     [SerializeField] private UnityEvent OnRightClick;
+    [SerializeField] private UnityEvent OnHover;
 
     [SerializeField] private GameObject hover;
     private bool hovering;
+    private bool lastHovering;
 
     void Awake(){
         if(OnLeftClick == null) OnLeftClick = new UnityEvent();
         if(OnRightClick == null) OnRightClick = new UnityEvent();
+        if(OnHover == null) OnHover = new UnityEvent();
     }
 
     void Update(){
@@ -25,7 +28,11 @@ public class UIInteractable : MonoBehaviour
             OnRightClick.Invoke();
         }
 
+        if(hovering && !lastHovering) OnHover.Invoke();
+
+
         if(hover != null) hover.SetActive(hovering);
+        lastHovering = hovering;
         hovering = false;
     }
 

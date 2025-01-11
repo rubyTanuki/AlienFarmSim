@@ -6,12 +6,12 @@ public class PRRowManager : MonoBehaviour
 {
     [SerializeField] private RectTransform rectTransform;  
 
-    private PRManager manager;
+    public PRManager manager;
     private UIInteractable interactScript;
 
     private Page page;
 
-    private bool zoomed;
+    public bool zoomed;
 
     public GameObject selectedSlot;
 

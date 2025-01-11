@@ -12,9 +12,12 @@ public class PlantTiltScript : MonoBehaviour
 
     private readonly float TILT_SPEED = .5f;
 
+    private GameObject leafParticles;
+
     // Start is called before the first frame update
     void Awake()
     {
+        leafParticles = Resources.Load<GameObject>("ParticleSystems/LeafParticles_small");
         rectTransform = GetComponent<RectTransform>();
     }
 
@@ -44,5 +47,32 @@ public class PlantTiltScript : MonoBehaviour
     public void Tilt(){
         tilting = true;
         targetRotation = new Vector3(0,0,-InputManager.mouseVelocity.x);
+        if(gameObject.transform.parent.GetComponent<PRPlantManager>().plant != null && 
+            Mathf.Abs(InputManager.mouseVelocity.x)>1)
+            spawnLeafParticles();
+    }
+
+    private void spawnLeafParticles(){
+        GameObject particles = Instantiate(leafParticles);
+        ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
+        var shape = particleSystem.shape;
+        if(InputManager.mouseVelocity.x <-1){
+            shape.position = new Vector3(0.6f, 0, 0);
+            shape.rotation = new Vector3(-15, -90, 0);
+        }else if(InputManager.mouseVelocity.x >1){
+            shape.position = new Vector3(-0.6f, 0, 0);
+            shape.rotation = new Vector3(-15, 90, 0);
+        }else{
+            shape.position = new Vector3(0, 0, 0);
+            shape.rotation = new Vector3(-15, 0, 0);
+        }
+        var renderer = particleSystem.GetComponent<Renderer>();
+        renderer.material = gameObject.transform.parent.GetComponent<PRPlantManager>().plant.leafMaterial;
+        particles.transform.SetParent(this.gameObject.transform.parent);
+        particles.transform.localScale = new Vector3(.6f, .6f, 1);
+        
+        Vector3 pos = transform.position;
+        pos.y = pos.y + ((rectTransform.sizeDelta.y)/128);
+        particles.transform.position = pos;
     }
 }

@@ -115,7 +115,7 @@ public class PRPlantManager : MonoBehaviour
     }
 
     public void OnMouseOver(){
-        if(Input.GetMouseButton(0) && mouseUpCheck && !manager.zoomed){
+        if((Input.GetMouseButton(0)||Input.GetMouseButtonDown(0)) && mouseUpCheck && !manager.zoomed){
             if(plant!=null)
                 HarvestPlant();
         }

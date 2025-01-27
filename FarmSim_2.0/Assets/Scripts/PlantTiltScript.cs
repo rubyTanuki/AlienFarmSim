@@ -46,7 +46,7 @@ public class PlantTiltScript : MonoBehaviour
 
     public void Tilt(){
         tilting = true;
-        targetRotation = new Vector3(0,0,-InputManager.mouseVelocity.x);
+        targetRotation = new Vector3(0,0,-InputManager.mouseVelocity.x*.6f);
         if(gameObject.transform.parent.GetComponent<PRPlantManager>().plant != null && 
             Mathf.Abs(InputManager.mouseVelocity.x)>1)
             spawnLeafParticles();

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class UIInteractable : MonoBehaviour
 {
-    [SerializeField] private UnityEvent OnLeftClick;
-    [SerializeField] private UnityEvent OnRightClick;
-    [SerializeField] private UnityEvent OnHover;
+    [SerializeField] public UnityEvent OnLeftClick;
+    [SerializeField] public UnityEvent OnRightClick;
+    [SerializeField] public UnityEvent OnHover;
 
     [SerializeField] private GameObject hover;
     private bool hovering;

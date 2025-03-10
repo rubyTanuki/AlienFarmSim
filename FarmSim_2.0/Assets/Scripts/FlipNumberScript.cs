@@ -39,15 +39,15 @@ public class FlipNumberScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
-            SetNum(currentNum + 1);
-        }
-        if(Input.GetMouseButtonDown(1)){
-            SetNum(currentNum + 5);
-        }
-        if(Input.GetMouseButtonDown(2)){
-            SetNum(UnityEngine.Random.Range(0, MAX_VALUE));
-        }
+        // if(Input.GetMouseButtonDown(0)){
+        //     SetNum(currentNum + 1);
+        // }
+        // if(Input.GetMouseButtonDown(1)){
+        //     SetNum(currentNum + 5);
+        // }
+        // if(Input.GetMouseButtonDown(2)){
+        //     SetNum(UnityEngine.Random.Range(0, MAX_VALUE));
+        // }
     }
 
     public void SetNum(int num){

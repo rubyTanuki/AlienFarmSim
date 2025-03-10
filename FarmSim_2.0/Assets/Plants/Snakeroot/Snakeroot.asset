@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Snakeroot
   m_EditorClassIdentifier: 
   growSpeed: 1.5
+  extendedName: SnakeRoot
+  description: 'This is a test plant This is a test plant This is a test plant '
+  seed: {fileID: 11400000, guid: eaa9f70490984a442aec441070ad2a10, type: 2}
   sprites:
   - {fileID: 182506095, guid: be9f16990ccefd841870a6661398ba8c, type: 3}
   - {fileID: 1601790489, guid: be9f16990ccefd841870a6661398ba8c, type: 3}

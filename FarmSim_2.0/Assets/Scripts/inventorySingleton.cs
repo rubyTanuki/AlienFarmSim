@@ -5,21 +5,29 @@ using System;
 
 public class inventorySingleton : MonoBehaviour
 {
-    public static inventorySingleton inv { get; private set; }
+    public static inventorySingleton inv;
     
     public Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
     public Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
     public Dictionary<SeedSO, int> seedInventory = new Dictionary<SeedSO, int>();
 
 
+    [SerializeField] private List<SeedSO> starterSeeds = new List<SeedSO>();
+    [SerializeField] private List<int> starterSeedsCount = new List<int>();
+
     public int money = 0;
 
 
     void Awake(){
+        inv = this;
         if(inv != null && inv != this){
             Destroy(this);
         }else{
             inv = this;
+        }
+
+        for(int i=0;i<starterSeeds.Count;i++){
+            inv.seedInventory.Add(starterSeeds[i], starterSeedsCount[i]);
         }
     }
 

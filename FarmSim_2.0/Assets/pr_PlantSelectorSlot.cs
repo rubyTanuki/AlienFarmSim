@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class pr_PlantSelectorSlot : MonoBehaviour
 {
+    public TextMeshProUGUI nameText;
+    public Image seedImage;
+    public FlipNumberScript flipNum;
 
     public PlantSO plant;
+
+    public int num;
 
     private UIInteractable interactable;
     public pr_InfoPanelManager infoManager;
@@ -21,7 +28,10 @@ public class pr_PlantSelectorSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        flipNum.SetNum(inventorySingleton.inv.seedInventory[plant.seed]);
+        nameText.text = plant.extendedName;
+        seedImage.sprite = plant.seed.seedPackage;
+        seedImage.SetNativeSize();
     }
 
     void setSelectedPlant(){
@@ -30,6 +40,11 @@ public class pr_PlantSelectorSlot : MonoBehaviour
 
     void clearSelectedPlant(){
         infoManager.setPlant(null);
+    }
+
+    public void setPlant(PlantSO plant, int n){
+        this.plant = plant;
+        num = n;
     }
 
     

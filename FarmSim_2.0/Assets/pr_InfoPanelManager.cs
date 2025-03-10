@@ -36,8 +36,10 @@ public class pr_InfoPanelManager : MonoBehaviour
             plantImage.sprite = selectedPlant.sprites[4];
             plantImage.SetNativeSize();
             seedImage.sprite = selectedPlant.seed.seedPackage;
-            //flipNum.SetNum(inventorySingleton.inv.seedInventory[selectedPlant.seed]);
-            flipNum.SetNum(99);
+            seedImage.SetNativeSize();
+            seedImage.gameObject.transform.localScale = new Vector2(2, 2);
+            flipNum.SetNum(inventorySingleton.inv.seedInventory[selectedPlant.seed]);
+            //flipNum.SetNum(99);
 
         }else{
             flipNum.gameObject.SetActive(false);

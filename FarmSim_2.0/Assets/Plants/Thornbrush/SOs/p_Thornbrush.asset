@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84aa973320a380f40b987330c41db212, type: 3}
-  m_Name: Thornbrush
+  m_Name: p_Thornbrush
   m_EditorClassIdentifier: 
   growSpeed: 10
-  extendedName: ThornBrush
-  description: Thornbrush is a boreal and tundra plant which produces a sap which
-    can be extruded into an incredibly dangerous posion
+  extendedName: Thornbrush
+  description: A boreal and tundra plant which produces a sap which can be extruded
+    into an incredibly dangerous posion
   seed: {fileID: 11400000, guid: 34c79306009d8974f83747e1708974f3, type: 2}
   sprites:
   - {fileID: -2040835500, guid: 8a80f7ff494e067468a28281df81370c, type: 3}
@@ -25,4 +25,9 @@ MonoBehaviour:
   - {fileID: 28156307, guid: 8a80f7ff494e067468a28281df81370c, type: 3}
   - {fileID: 2061092269, guid: 8a80f7ff494e067468a28281df81370c, type: 3}
   - {fileID: -926831065, guid: 8a80f7ff494e067468a28281df81370c, type: 3}
+  harvestItems:
+  - {fileID: 11400000, guid: 7af04a2f7f8486e46bfd8cb1cabf6986, type: 2}
+  - {fileID: 11400000, guid: 34c79306009d8974f83747e1708974f3, type: 2}
+  harvestItemNumsMax: 0200000001000000
+  harvestItemNumsMin: 0500000002000000
   leafMaterial: {fileID: 2100000, guid: 2df38273a9aa07d4da4571e0a648d8d3, type: 2}

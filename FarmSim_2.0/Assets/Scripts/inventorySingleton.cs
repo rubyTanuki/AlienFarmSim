@@ -6,6 +6,7 @@ using System;
 public class inventorySingleton : MonoBehaviour
 {
     public static inventorySingleton inv;
+
     
     public Dictionary<ItemSO, int> itemInventory = new Dictionary<ItemSO, int>();
     public Dictionary<CropSO, int> cropInventory = new Dictionary<CropSO, int>();
@@ -43,6 +44,7 @@ public class inventorySingleton : MonoBehaviour
         AddItemToInventory(item, 1);
     }
     public void AddItemToInventory(ItemSO item, int num){
+        util_invUpdateManager.singleton.AddUpdate(item, num);
         if(itemInventory.ContainsKey(item)){
             itemInventory[item] = itemInventory[item]+num;
         }else{
@@ -55,6 +57,7 @@ public class inventorySingleton : MonoBehaviour
         AddItemToInventory(seed, 1);
     }
     public void AddItemToInventory(SeedSO seed, int num){
+        util_invUpdateManager.singleton.AddUpdate(seed, num);
         if(seedInventory.ContainsKey(seed)){
             seedInventory[seed] = seedInventory[seed]+num;
         }else{
@@ -67,6 +70,7 @@ public class inventorySingleton : MonoBehaviour
         AddItemToInventory(crop, 1);
     }
     public void AddItemToInventory(CropSO crop, int num){
+        util_invUpdateManager.singleton.AddUpdate(crop, num);
         if(cropInventory.ContainsKey(crop)){
             cropInventory[crop] = cropInventory[crop]+num;
         }else{

@@ -79,6 +79,7 @@ public class PRPlantManager : MonoBehaviour
 
     public void SetPlant(PlantSO p){
         ResetPlant();
+        //inventorySingleton.inv.AddItemToInventory(plant.seed);
         plant = p;
     }
 
@@ -90,11 +91,17 @@ public class PRPlantManager : MonoBehaviour
         if(plant!=null){
             if(growthStage >0){
                 //harvesting logic (add stuff to inv)
+                if(growthStage==plant.sprites.Count-1){
+                    for(int i=0;i<plant.harvestItems.Count;i++){
+                        //add item to inv based on amt of 
+                        inventorySingleton.inv.AddItemToInventory(plant.harvestItems[i], Random.Range(plant.harvestItemNumsMin[i], plant.harvestItemNumsMax[i]+1));
+                    }
+                }
+                //spawning particles
                 if(plant.leafMaterial!=null)
                     spawnLeafParticles();
             }
-            
-            //plant = null;
+            //resetting plant to seed
             growthTimer = 0;
             growthStage = 0;
         }

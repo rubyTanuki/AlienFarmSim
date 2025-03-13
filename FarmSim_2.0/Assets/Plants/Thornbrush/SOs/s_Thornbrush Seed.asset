@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17c77df881da92f4c907cba674b35a0c, type: 3}
-  m_Name: Thornbrush Seed
+  m_Name: s_Thornbrush Seed
   m_EditorClassIdentifier: 
+  extendedName: 
+  description: Seed for a Thornbrush
+  image: {fileID: 0}
+  baseValue: 3
   plant: {fileID: 11400000, guid: bc21296fae908c2408654eae91f692b2, type: 2}
   seedPackage: {fileID: 940177612, guid: 8a80f7ff494e067468a28281df81370c, type: 3}

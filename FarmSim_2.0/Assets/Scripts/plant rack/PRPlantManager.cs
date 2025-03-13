@@ -10,12 +10,16 @@ public class PRPlantManager : MonoBehaviour
     public PlantSO plant;
     [SerializeField] private Sprite empty;
     [SerializeField] private Image plantImage;
-    [SerializeField] private PRRowManager manager;
+    private pr_rowManager manager;
+
+    [SerializeField] private PlantTiltScript tiltScript;
 
     private GameObject leafParticles;
 
     private float growthTimer;
-    private int growthStage;
+    public int growthStage;
+
+    private float growSpeed;
 
     private float disableTime;
 
@@ -24,7 +28,9 @@ public class PRPlantManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        growSpeed = plant.growSpeed*UnityEngine.Random.Range(.6f, 1.4f);
         StartCoroutine(waitToInit());
+        manager = transform.parent.parent.GetComponent<pr_rowManager>();
         leafParticles = Resources.Load<GameObject>("ParticleSystems/LeafParticles");
         if(plant!=null)
             SetPlant(plant);
@@ -53,10 +59,12 @@ public class PRPlantManager : MonoBehaviour
             plantImage.sprite = empty;
         }else{
             growthTimer += Time.deltaTime;
-            float growSpeed = plant.growSpeed*UnityEngine.Random.Range(.8f, 1.2f);
+            
             while(growthTimer>growSpeed && growthStage<plant.sprites.Count-1){
                 growthTimer-=growSpeed;
                 growthStage++;
+                growSpeed = plant.growSpeed*UnityEngine.Random.Range(.6f, 1.4f);
+                tiltScript.Wobble();
             }
 
             plantImage.sprite = plant.sprites[growthStage];
@@ -76,17 +84,20 @@ public class PRPlantManager : MonoBehaviour
 
     public void ResetPlant(){
         HarvestPlant();
-        growthTimer = 0;
-        growthStage = 0;
     }
 
     public void HarvestPlant(){
-        if(growthStage >0){
-            if(plant.leafMaterial!=null)
-                spawnLeafParticles();
+        if(plant!=null){
+            if(growthStage >0){
+                //harvesting logic (add stuff to inv)
+                if(plant.leafMaterial!=null)
+                    spawnLeafParticles();
+            }
+            
+            //plant = null;
+            growthTimer = 0;
+            growthStage = 0;
         }
-        
-        plant = null;
     }
 
     private void spawnLeafParticles(){
@@ -115,7 +126,7 @@ public class PRPlantManager : MonoBehaviour
     }
 
     public void OnMouseOver(){
-        if((Input.GetMouseButton(0)||Input.GetMouseButtonDown(0)) && mouseUpCheck && !manager.zoomed){
+        if((Input.GetMouseButton(0)||Input.GetMouseButtonDown(0)) && mouseUpCheck && !manager.zoom){
             if(plant!=null)
                 HarvestPlant();
         }

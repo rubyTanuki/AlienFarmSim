@@ -6,6 +6,8 @@ public class PRSlotManager : MonoBehaviour
 {
     private PRRowManager rowManager;
 
+    public PRPlantManager plantManager;
+
     [SerializeField] private GameObject selected;
 
     // Start is called before the first frame update
@@ -17,7 +19,8 @@ public class PRSlotManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        selected.SetActive(this.gameObject == rowManager.selectedSlot);
+        selected.SetActive(false);
+        //selected.SetActive(this.gameObject == rowManager.selectedSlot);
     }
 
     public void Select(){

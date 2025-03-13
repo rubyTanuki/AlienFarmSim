@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84aa973320a380f40b987330c41db212, type: 3}
   m_Name: Thornbrush
   m_EditorClassIdentifier: 
-  growSpeed: 2
+  growSpeed: 10
   extendedName: ThornBrush
   description: Thornbrush is a boreal and tundra plant which produces a sap which
     can be extruded into an incredibly dangerous posion

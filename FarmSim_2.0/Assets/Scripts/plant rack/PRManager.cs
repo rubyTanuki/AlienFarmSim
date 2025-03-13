@@ -12,11 +12,17 @@ public class PRManager : MonoBehaviour
 
     public GameObject selectedRow;
 
+    public RowSettingsManager settingsManager;
+
     // Start is called before the first frame update
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         page = GetComponent<Page>();
+    }
+
+    void OnEnable(){
+        settingsManager.currentPR = this;
     }
 
     // Update is called once per frame

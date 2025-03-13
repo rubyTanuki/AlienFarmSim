@@ -10,6 +10,8 @@ public class RowSettingsManager : MonoBehaviour
     public GameObject button;
     private RectTransform buttonTransform;
 
+    public PRManager currentPR;
+
     private bool plantIsOpen;
 
     private readonly float BUTTON_LEFT_X = -67.5f;
@@ -61,5 +63,9 @@ public class RowSettingsManager : MonoBehaviour
         buttonTarget = new Vector2(BUTTON_RIGHT_X, buttonTransform.anchoredPosition.y);
         potPanel.SetActive(true);
         plantPanel.SetActive(false);
+    }
+
+    public void PlantInSelectedRow(PlantSO plant){
+        currentPR.selectedRow.GetComponent<pr_rowZoomed>().PlantAll(plant);
     }
 }

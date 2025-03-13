@@ -17,13 +17,15 @@ public class pr_InfoPanelManager : MonoBehaviour
 
     public PlantSO nullPlant;
 
+    public RowSettingsManager settingsManager;
+
 
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        settingsManager = transform.parent.parent.GetComponent<RowSettingsManager>();
     }
 
     // Update is called once per frame
@@ -54,5 +56,9 @@ public class pr_InfoPanelManager : MonoBehaviour
 
     public void setPlant(PlantSO p){
         selectedPlant = p;
+    }
+
+    public void PlantInSelectedRow(){
+        settingsManager.PlantInSelectedRow(selectedPlant);
     }
 }

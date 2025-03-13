@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84aa973320a380f40b987330c41db212, type: 3}
   m_Name: Snakeroot
   m_EditorClassIdentifier: 
-  growSpeed: 1.5
+  growSpeed: 7
   extendedName: SnakeRoot
   description: 'This is a test plant This is a test plant This is a test plant '
   seed: {fileID: 11400000, guid: eaa9f70490984a442aec441070ad2a10, type: 2}

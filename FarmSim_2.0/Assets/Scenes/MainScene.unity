@@ -5257,8 +5257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starterSeeds:
   - {fileID: 11400000, guid: 34c79306009d8974f83747e1708974f3, type: 2}
+  - {fileID: 11400000, guid: fee6adaab74dfe74987e463d67adef5a, type: 2}
   - {fileID: 11400000, guid: eaa9f70490984a442aec441070ad2a10, type: 2}
-  starterSeedsCount: 0c00000005000000
+  starterSeedsCount: 0c0000000500000005000000
   money: 200
 --- !u!1 &611292331
 GameObject:

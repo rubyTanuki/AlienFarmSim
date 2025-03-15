@@ -22,6 +22,7 @@ public class PRPlantManager : MonoBehaviour
     private float growSpeed;
 
     private float disableTime;
+    private float lastEnable = 0;
 
     private bool mouseUpCheck;
 
@@ -43,6 +44,7 @@ public class PRPlantManager : MonoBehaviour
 
     void OnEnable()
     {
+        lastEnable = Time.time;
         mouseUpCheck = false;
         growthTimer += Time.time - disableTime;
     }
@@ -63,8 +65,16 @@ public class PRPlantManager : MonoBehaviour
             while(growthTimer>growSpeed && growthStage<plant.sprites.Count-1){
                 growthTimer-=growSpeed;
                 growthStage++;
+                //psuedorandom flip using time.time
+                Vector3 scale = plantImage.gameObject.GetComponent<RectTransform>().localScale;
+                plantImage.gameObject.GetComponent<RectTransform>().localScale = new Vector3(((int)(Time.time*100))%2==0?scale.x:-scale.x, scale.y, scale.z);
+                //randomizing growth speed
                 growSpeed = plant.growSpeed*UnityEngine.Random.Range(.6f, 1.4f);
-                tiltScript.Wobble();
+                //only send trigger for particles if on screen when growth happened
+                if(Time.time-lastEnable>.2f){
+                    tiltScript.Wobble();
+                }
+                
             }
 
             plantImage.sprite = plant.sprites[growthStage];
@@ -92,9 +102,20 @@ public class PRPlantManager : MonoBehaviour
             if(growthStage >0){
                 //harvesting logic (add stuff to inv)
                 if(growthStage==plant.sprites.Count-1){
+                    inventorySingleton inv = inventorySingleton.inv;
+                    
                     for(int i=0;i<plant.harvestItems.Count;i++){
                         //add item to inv based on amt of 
-                        inventorySingleton.inv.AddItemToInventory(plant.harvestItems[i], Random.Range(plant.harvestItemNumsMin[i], plant.harvestItemNumsMax[i]+1));
+                        ItemSO item = plant.harvestItems[i];
+                        int amt = Random.Range(plant.harvestItemNumsMin[i], plant.harvestItemNumsMax[i]+1);
+                        if(item is SeedSO seed){
+                            inv.AddItemToInventory(seed, amt);
+                        }else if(item is CropSO crop){
+                            inv.AddItemToInventory(crop, amt);
+                        }else{
+                            inv.AddItemToInventory(item, amt);
+                        }
+                        //inv.AddItemToInventory(plant.harvestItems[i], Random.Range(plant.harvestItemNumsMin[i], plant.harvestItemNumsMax[i]+1));
                     }
                 }
                 //spawning particles

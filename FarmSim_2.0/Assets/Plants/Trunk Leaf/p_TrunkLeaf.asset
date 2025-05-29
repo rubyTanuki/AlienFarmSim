@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: p_TrunkLeaf
   m_EditorClassIdentifier: 
   growSpeed: 5
+  rowAmt: 5
   extendedName: Trunk Leaf
   description: 
   seed: {fileID: 11400000, guid: fee6adaab74dfe74987e463d67adef5a, type: 2}
   sprites:
-  - {fileID: 1816743161, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
-  - {fileID: -122690574, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
-  - {fileID: -97873667, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
-  - {fileID: -1326849569, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
-  - {fileID: -352923615, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
-  - {fileID: 2021262941, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
-  - {fileID: 1544203702, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
+  - {fileID: 8063459318144121914, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
+  - {fileID: -15953074196269854, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
+  - {fileID: -1525763747656275231, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
+  - {fileID: 4081502305473538467, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
+  - {fileID: 8494565251522833206, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
+  - {fileID: 5149352923028199501, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
+  - {fileID: -6816456136934448770, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
   harvestItems: []
   harvestItemNumsMax: 
   harvestItemNumsMin: 
   leafMaterial: {fileID: 2100000, guid: b2ca433512d9b6d4bb11aad4b7e47330, type: 2}
+  optimalStats: 5000000028000000370000002e0000003e000000
+  badStats: 2d0000001700000010000000150000001f000000

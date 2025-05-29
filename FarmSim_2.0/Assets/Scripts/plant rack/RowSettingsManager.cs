@@ -67,5 +67,6 @@ public class RowSettingsManager : MonoBehaviour
 
     public void PlantInSelectedRow(PlantSO plant){
         currentPR.selectedRow.GetComponent<pr_rowZoomed>().PlantAll(plant);
+        
     }
 }

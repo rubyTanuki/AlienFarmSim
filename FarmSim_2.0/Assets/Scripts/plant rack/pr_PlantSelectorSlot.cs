@@ -28,6 +28,11 @@ public class pr_PlantSelectorSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!inventorySingleton.inv.seedInventory.ContainsKey(plant.seed))
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         flipNum.SetNum(inventorySingleton.inv.seedInventory[plant.seed]);
         nameText.text = plant.extendedName;
         seedImage.sprite = plant.seed.seedPackage;

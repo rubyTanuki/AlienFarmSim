@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ebdc22938058c44c9964e2c9dd55c26
+guid: 78679cfbccef80c41a832e049c66abf9
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -122,18 +122,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Trunk Leaf 01
+  - name: Sprite-0001
     originalName: 
-    pivot: {x: 0.47247705, y: -0.09210526}
+    pivot: {x: 0.34210527, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 218
-      height: 76
-    spriteID: f742cf49b17acc2439fe8523d01b4029
+      width: 38
+      height: 42
+    spriteID: 7bb9eaca8f75a824f8287e92c1f4b9a0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -145,21 +145,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -896342811
-    name: Trunk Leaf 01
+    guid: -66354471
+    name: Sprite-0001
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Trunk Leaf 01
+    - name: Sprite-0001
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 25
-        y: 7
-        width: 218
-        height: 76
-      spriteId: f742cf49b17acc2439fe8523d01b4029
+        x: 19
+        y: 0
+        width: 38
+        height: 42
+      spriteId: 7bb9eaca8f75a824f8287e92c1f4b9a0
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -178,5 +178,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 256, y: 128}
-  previousTextureSize: {x: 256, y: 128}
+  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 64, y: 64}

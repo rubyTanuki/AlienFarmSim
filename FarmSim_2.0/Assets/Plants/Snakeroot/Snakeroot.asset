@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Snakeroot
   m_EditorClassIdentifier: 
   growSpeed: 7
+  rowAmt: 9
   extendedName: SnakeRoot
   description: 'This is a test plant This is a test plant This is a test plant '
   seed: {fileID: 11400000, guid: eaa9f70490984a442aec441070ad2a10, type: 2}
@@ -24,4 +25,7 @@ MonoBehaviour:
   - {fileID: -295793345, guid: be9f16990ccefd841870a6661398ba8c, type: 3}
   - {fileID: -1324033037, guid: be9f16990ccefd841870a6661398ba8c, type: 3}
   - {fileID: -554803052, guid: be9f16990ccefd841870a6661398ba8c, type: 3}
+  harvestItems: []
+  harvestItemNumsMax: 
+  harvestItemNumsMin: 
   leafMaterial: {fileID: 2100000, guid: eba8a3f230bc43f4d84a77034606b239, type: 2}

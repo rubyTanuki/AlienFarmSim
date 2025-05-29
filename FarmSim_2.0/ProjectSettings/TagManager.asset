@@ -15,7 +15,7 @@ TagManager:
   - Post-Processing
   - CRTPanel
   - RenderTextureLayer
-  - 
+  - UIOverlay
   - 
   - 
   - 
@@ -44,4 +44,10 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2467520347
+    locked: 0
+  - name: Particles
+    uniqueID: 4088091435
+    locked: 0
+  - name: Overlay UI
+    uniqueID: 1910503737
     locked: 0

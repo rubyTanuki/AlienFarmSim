@@ -10,7 +10,21 @@ public class pr_rowManager : MonoBehaviour
     private pr_rowUnZoomed rowUnZoomed;
     private UIInteractable interactScript;
 
+    public PlantSO plant;
+
+    public float water;
+    public float light;
+    public float nitrogen;
+    public float phosphorus;
+    public float oxygen;
+
     void Awake(){
+        water = 35;
+        light = 45f;
+        nitrogen = 55f;
+        phosphorus = 65f;
+        oxygen = 45f;
+
         rowZoomed = GetComponent<pr_rowZoomed>();
         rowUnZoomed = GetComponent<pr_rowUnZoomed>();
         manager = this.transform.parent.parent.gameObject.GetComponent<PRManager>();

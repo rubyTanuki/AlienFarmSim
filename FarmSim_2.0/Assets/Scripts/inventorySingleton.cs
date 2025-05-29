@@ -108,8 +108,7 @@ public class inventorySingleton : MonoBehaviour
         return SubtractItemFromInventory(seed, 1);
     }
     public bool SubtractItemFromInventory(SeedSO seed, int num){
-        if(seedInventory.ContainsKey(seed)) return false;
-        else if(seedInventory[seed]-num<0) return false;
+        if(!seedInventory.ContainsKey(seed)) return false;
         else{
             seedInventory[seed] -= num;
             if(seedInventory[seed]<=0){

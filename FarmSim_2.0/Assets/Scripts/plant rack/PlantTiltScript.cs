@@ -14,12 +14,12 @@ public class PlantTiltScript : MonoBehaviour
 
     private GameObject leafParticles;
 
-    private pr_rowManager rowManager;
+    public pr_rowManager rowManager;
 
     // Start is called before the first frame update
     void Awake()
     {
-        rowManager = this.transform.parent.parent.parent.GetComponent<pr_rowManager>();
+        //rowManager = this.transform.parent.parent.parent.GetComponent<pr_rowManager>();
         leafParticles = Resources.Load<GameObject>("ParticleSystems/LeafParticles_small");
         rectTransform = GetComponent<RectTransform>();
     }
@@ -47,16 +47,18 @@ public class PlantTiltScript : MonoBehaviour
     }
 
     public void Tilt(){
-        if((!rowManager.zoom || rowManager.isSelectedRow()) && gameObject.transform.parent.GetComponent<PRPlantManager>().growthStage > 0){
+        if (rowManager.zoom && rowManager.isSelectedRow()) return;
+        if ((!rowManager.zoom || rowManager.isSelectedRow()) && gameObject.transform.parent.GetComponent<PRPlantManager>().growthStage > 0)
+        {
             tilting = true;
             float range = .25f;
-            float randomMulti = Random.Range(1f-range, 1f+range);
+            float randomMulti = Random.Range(1f - range, 1f + range);
             // Debug.Log(-InputManager.mouseVelocity.x*.6f*randomMulti);
-            float clampedTarget = Mathf.Clamp(-InputManager.mouseVelocity.x*.6f*randomMulti, -10, 10);
-            targetRotation = new Vector3(0,0,clampedTarget);
-            if(gameObject.transform.parent.GetComponent<PRPlantManager>().plant != null && 
-                gameObject.transform.parent.GetComponent<PRPlantManager>().growthStage >= 2 && 
-                Mathf.Abs(InputManager.mouseVelocity.x)>1)
+            float clampedTarget = Mathf.Clamp(-InputManager.mouseVelocity.x * .6f * randomMulti, -10, 10);
+            targetRotation = new Vector3(0, 0, clampedTarget);
+            if (gameObject.transform.parent.GetComponent<PRPlantManager>().plant != null &&
+                gameObject.transform.parent.GetComponent<PRPlantManager>().growthStage >= 2 &&
+                Mathf.Abs(InputManager.mouseVelocity.x) > 1)
                 spawnLeafParticles();
         }
     }

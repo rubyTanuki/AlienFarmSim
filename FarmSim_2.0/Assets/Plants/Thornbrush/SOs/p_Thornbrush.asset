@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: p_Thornbrush
   m_EditorClassIdentifier: 
   growSpeed: 10
+  rowAmt: 8
   extendedName: Thornbrush
   description: A boreal and tundra plant which produces a sap which can be extruded
     into an incredibly dangerous posion
@@ -31,3 +32,5 @@ MonoBehaviour:
   harvestItemNumsMax: 0200000001000000
   harvestItemNumsMin: 0500000002000000
   leafMaterial: {fileID: 2100000, guid: 2df38273a9aa07d4da4571e0a648d8d3, type: 2}
+  optimalStats: 460000003c0000002d000000320000003e000000
+  badStats: 140000001e000000160000001f0000002a000000

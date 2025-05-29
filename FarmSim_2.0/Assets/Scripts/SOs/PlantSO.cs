@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlantSO : ScriptableObject
 {
     public float growSpeed;
+    public int rowAmt;
 
     public string extendedName;
     public string description;
@@ -19,4 +20,8 @@ public class PlantSO : ScriptableObject
     public List<int> harvestItemNumsMin = new List<int>();
 
     public Material leafMaterial;
+
+    public List<int> optimalStats;
+    public List<int> badStats;
+    
 }

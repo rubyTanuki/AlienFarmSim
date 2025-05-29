@@ -10,9 +10,9 @@ public class PRPlantManager : MonoBehaviour
     public PlantSO plant;
     [SerializeField] private Sprite empty;
     [SerializeField] private Image plantImage;
-    private pr_rowManager manager;
+    public pr_rowManager rowManager;
 
-    [SerializeField] private PlantTiltScript tiltScript;
+    public PlantTiltScript tiltScript;
 
     private GameObject leafParticles;
 
@@ -31,7 +31,7 @@ public class PRPlantManager : MonoBehaviour
     {
         growSpeed = plant.growSpeed*UnityEngine.Random.Range(.6f, 1.4f);
         StartCoroutine(waitToInit());
-        manager = transform.parent.parent.GetComponent<pr_rowManager>();
+        //manager = transform.parent.parent.GetComponent<pr_rowManager>();
         leafParticles = Resources.Load<GameObject>("ParticleSystems/LeafParticles");
         if(plant!=null)
             SetPlant(plant);
@@ -154,7 +154,7 @@ public class PRPlantManager : MonoBehaviour
     }
 
     public void OnMouseOver(){
-        if((Input.GetMouseButton(0)||Input.GetMouseButtonDown(0)) && mouseUpCheck && !manager.zoom){
+        if((Input.GetMouseButton(0)||Input.GetMouseButtonDown(0)) && mouseUpCheck && !rowManager.zoom){
             if(plant!=null)
                 HarvestPlant();
         }

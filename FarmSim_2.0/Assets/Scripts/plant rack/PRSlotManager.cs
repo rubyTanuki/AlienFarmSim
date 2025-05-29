@@ -13,7 +13,7 @@ public class PRSlotManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        rowManager = this.transform.parent.gameObject.GetComponent<PRRowManager>();
+        //rowManager = this.transform.parent.gameObject.GetComponent<PRRowManager>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,14 @@ public class PRSlotManager : MonoBehaviour
         //selected.SetActive(this.gameObject == rowManager.selectedSlot);
     }
 
-    public void Select(){
+    public void Select()
+    {
 
+    }
+
+    public void setManager(pr_rowManager manager)
+    {
+        plantManager.rowManager = manager;
+        plantManager.tiltScript.rowManager = manager;
     }
 }

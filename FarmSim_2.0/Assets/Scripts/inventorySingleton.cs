@@ -32,7 +32,20 @@ public class inventorySingleton : MonoBehaviour
         }
     }
 
-
+    public int Get(ItemSO item)
+    {
+        if (!Contains(item)) return -1;
+        switch (item)
+        {
+            case SeedSO s:
+                return seedInventory[s];
+            case CropSO c:
+                return cropInventory[c];
+            case ItemSO i:
+                return itemInventory[i];
+        }
+        return -2;
+    }
 
 
     /// ADDING
@@ -142,15 +155,19 @@ public class inventorySingleton : MonoBehaviour
     
     
 
-    public bool InventoryContains(ItemSO item){
-        return itemInventory.ContainsKey(item);
+    public bool Contains(ItemSO item){
+        switch (item)
+        {
+            case SeedSO s:
+                return seedInventory.ContainsKey(s);
+            case CropSO c:
+                return cropInventory.ContainsKey(c);
+            case ItemSO i:
+                return itemInventory.ContainsKey(i);
+        }
+        return false;
     }
-    public bool InventoryContains(SeedSO seed){
-        return seedInventory.ContainsKey(seed);
-    }
-    public bool InventoryContains(CropSO crop){
-        return cropInventory.ContainsKey(crop);
-    }
+    
 
 
 }

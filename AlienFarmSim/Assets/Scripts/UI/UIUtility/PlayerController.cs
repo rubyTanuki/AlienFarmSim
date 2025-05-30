@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = Input.mousePosition;
         List<RaycastResult> raycastResults = new List<RaycastResult>();
-        Physics2D.RaycastAll(eventData, raycastResults);
+        //Physics2D.RaycastAll(eventData, raycastResults);
         return raycastResults;
     }
 

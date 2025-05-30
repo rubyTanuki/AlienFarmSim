@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extendedName: Trunk Leaf Bulbs
   description: 
-  image: {fileID: -1125799030, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}
+  image: {fileID: -6816456136934448770, guid: fd2e169ead75ee7448dea1eac822d5ee, type: 3}
   baseValue: 20
   plant: {fileID: 11400000, guid: ef2cf1fc76adbe748950253dc2ff46bf, type: 2}
   seedPackage: {fileID: -1125799030, guid: 0eb0b9ad723ca2a4ba5bd8a65f2e69c6, type: 3}

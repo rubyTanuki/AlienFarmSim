@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_New Shader Graph
+  m_Name: crt_filter
   m_Shader: {fileID: -6465566751694194690, guid: b737cbc05204dfc4b8a7d54b90447e45, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -47,7 +47,7 @@ Material:
     - _Panini_Distortion: 0.41
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ScanLinesSpeed: -0.026
+    - _ScanLinesSpeed: 0.009
     - _warp_strength: 0.29
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}

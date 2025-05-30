@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c77df881da92f4c907cba674b35a0c, type: 3}
   m_Name: Snakeroot Leaf
   m_EditorClassIdentifier: 
+  extendedName: Snakeroot Leaf
+  description: 
+  image: {fileID: -554803052, guid: be9f16990ccefd841870a6661398ba8c, type: 3}
+  baseValue: 0
   plant: {fileID: 11400000, guid: 1fef5a807f4c05248a1b252c36fdc3e7, type: 2}
   seedPackage: {fileID: -1718306129, guid: be9f16990ccefd841870a6661398ba8c, type: 3}

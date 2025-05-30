@@ -19,8 +19,9 @@ public class pr_SeedSelectorManager : MonoBehaviour
 
     void OnEnable(){
         //destorying all already existing slots
-        foreach(Transform child in content.transform){
-            Destroy(child.gameObject);
+        for (int i = content.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(content.transform.GetChild(i).gameObject);
         }
         //replacing with updated slots from inventory singleton
         foreach(KeyValuePair<SeedSO, int> kvp in inventorySingleton.inv.seedInventory){
